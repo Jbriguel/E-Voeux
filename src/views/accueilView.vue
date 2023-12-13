@@ -59,7 +59,7 @@ export default {
             <h1
               class="topText py-2 bg-gradient-to-r from-green-300 via-blue-200 to-purple-200 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl"
             >
-              Merry Chritsmass &amp;
+            Merry Christmas &amp;
 
               <span class="sm:block sm:mt-3 text-3xl font-extrabold text-transparent sm:text-5xl topText"> Happy New Year. </span>
             </h1>
