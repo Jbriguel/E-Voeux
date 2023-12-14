@@ -80,7 +80,7 @@ export default {
                 />
               </button>
 
-              <createvoeuxbtn/>
+              <createvoeuxbtn :btnLinkTo="'/personnalVoeux'" :btnTexte="'Créer ton voeux Personnel'" />
             </div>
           </div>
         </div>

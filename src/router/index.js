@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import AppVue from '@/App.vue';
 import accueilViewVue from '@/views/accueilView.vue';
 import personnalVoeuxVue from '@/views/personnalVoeux.vue';
+
+
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -14,7 +17,14 @@ const router = createRouter({
       path: '/personnalVoeux',
       name: 'personnalVoeux',
       component: personnalVoeuxVue
-    },
+    } ,
+     { path: '/:pathMatch(.*)*', beforeEnter: (to, from, next) => { next('/404') } },
+    {
+      path: '/404',
+      name: '404',
+      component: () => import('../views/404.vue')
+    }
+     
     // {
     //   path: '/modifierUser',
     //   name: 'editerUser',

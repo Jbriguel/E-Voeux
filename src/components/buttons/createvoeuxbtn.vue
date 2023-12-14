@@ -1,15 +1,26 @@
 <template>
   
     <div class="text-center align-middle md:mt-6 mt-3"> 
-        <router-link to="/personnalVoeux"> 
-      <button class="buttonCreateVoeux" > Créer ton voeux Personnel</button></router-link>
+        <router-link :to="btnLinkTo"> 
+      <button class="buttonCreateVoeux" > {{ btnTexte }} </button></router-link>
     </div>
  
 </template>
 
 <script>
+
+import { ref, reactive, watchEffect, computed } from "vue";
 export default {
-name:"CreateVoeuxbtn"
+name:"CreateVoeuxbtn",
+props:
+ { btnTexte: {
+    type: String,
+    required: true
+  },btnLinkTo: {
+    type: String,
+    required: true
+  }}
+
 };
 </script>
 

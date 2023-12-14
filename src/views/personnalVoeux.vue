@@ -72,7 +72,7 @@ export default {
                         >Choisir image</label
                       >
                       <select
-                        class="imagesListe px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
+                        class="imagesListe px-4 py-3 w-full text-slate-700 rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
                       >
                         <option value="1" selected>Image #1</option>
                         <option value="2">Image #2</option>
@@ -94,14 +94,14 @@ export default {
                         id="prenom"
                         type="text"
                         placeholder="Votre prénom"
-                        class="w-full py-3 bg-gray-100 rounded-md border-2 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                        class="w-full py-3 placeholder-gray-400/70 text-slate-700 bg-gray-100 rounded-md border-2 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                       />
                     </div>
                   </div>
                   <div class=" ">
                     <textarea
                       placeholder="Rédiger votre voeux..."
-                      class="block mt-2 w-full placeholder-gray-400/70 rounded-lg border border-gray-200 bg-gray-100 px-4 h-60 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                      class="block mt-2 w-full placeholder-gray-400/70 text-slate-700 rounded-lg border border-gray-200 bg-gray-100 px-4 h-60 py-2 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                     ></textarea>
 
                     <p class="mt-3 text-xs text-gray-200">
@@ -109,7 +109,7 @@ export default {
                     </p>
                   </div>
                   <div class="text-right m-2 px-5">
-                    <createvoeuxbtn />
+                    <createvoeuxbtn  :btnLinkTo="'/'" :btnTexte="'Créer ton voeux Personnel'"  />
                   </div>
                 </form>
               </div>

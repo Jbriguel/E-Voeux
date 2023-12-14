@@ -1,7 +1,7 @@
 <template>
-  <fwb-modal @close="$emit('close')" persistent>
+  <fwb-modal @close="$emit('close')" persistent class="m-0">
     <template #header>
-      <div class="flex items-center text-lg">Creer votre voeux</div>
+      <div class="flex items-center text-lg text-slate-700">Creer votre voeux</div>
     </template>
     <template #body>
       <div class="space-y-1 m-0 p-0">
@@ -14,31 +14,32 @@
           <span>---</span>
         </div>
       </div>
-      <p class="text-base leading-relaxed text-gray-500">
+      <p class="text-sm md:text-base leading-relaxed text-gray-500 text-center">
         The European Union’s General Data Protection Regulation (G.D.P.R.) goes into
         effect on May 25 and is meant to ensure a common set of data rights in the
         European Union. It requires organizations to notify users as soon as possible of
         high-risk data breaches that could personally affect them.
       </p>
-      <div class="w-full flex justify-center items-center">
-        <div class="relative w-full mx-5">
+      <div class="flex flex-wrap items-center content-center justify-center">
+        <div class="w-full sm:w-4/6 p-1">
           <input
             type="text"
             readonly
-            class="h-14 w-full px-2 py-2 rounded-md border-slate-100 z-0 pointer-events-none"
+            class="h-14 w-full px-2 py-2 placeholder-gray-400/70 text-slate-700 rounded-md border-slate-100 z-0 pointer-events-none"
             :value="lienPartage"
             id="lienv"
           />
-          <div class="absolute top-2 right-2">
-            <button
-              @click="partagerWhatsApp()"
-              class="h-10 px-2 text-center text-white rounded-md bg-green-400 hover:bg-green-500"
-            >
-              {{ textesData.getLocalizedText(5) }} <i class="fab fa-whatsapp"></i>
-            </button>
-          </div>
+        </div>
+        <div class="w-full flex items-center  justify-center sm:w-2/6 p-1">
+          <button
+            @click="partagerWhatsApp()"
+            class=" sm:h-14 w-full h-12 px-2 text-center text-white rounded-md bg-green-400 hover:bg-green-500"
+          >
+            {{ textesData.getLocalizedText(5) }} <i class="fab fa-whatsapp"></i>
+          </button>
         </div>
       </div>
+
       <hr class="my-1" />
       <div>
         <div class="grid-cols-1">
@@ -49,7 +50,7 @@
             ><i class="fas fa-hand-point-down cligno2" style="color: darkgreen"></i
           ></label>
           <select
-            class="voeuxListe px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
+            class="voeuxListe px-4 py-3 text-slate-700 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
           >
             <option value="fr">Français</option>
             <option value="en">English</option>
@@ -59,7 +60,7 @@
           <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
             <label for="voeuxListe" class="text-slate-700">Choisir Voeux</label>
             <select
-              class="voeuxListe px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
+              class="voeuxListe px-4 py-3 w-full text-slate-700 rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
             >
               <option value="1" selected>Voeux #1</option>
               <option value="2">Voeux #2</option>
@@ -76,7 +77,7 @@
           <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
             <label for="imagesListe" class="text-slate-700">Choisir image</label>
             <select
-              class="imagesListe px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
+              class="imagesListe px-4 py-3 w-full text-slate-700 rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
             >
               <option value="1" selected>Image #1</option>
               <option value="2">Image #2</option>
@@ -94,30 +95,27 @@
           </div>
         </div>
         <hr class="my-1" />
+
         <fieldset class="w-full space-y-1 mt-2">
-          <label for="prenom" class="text-slate-700">Prénom</label>
-          <div class="flex">
-            <span
-              class="flex items-center text-gray-700 font-semibold px-3 pointer-events-none sm:text-sm rounded-l-md bg-gray-300"
-            >
-              Votre Prénom</span
-            >
-            <input
-              type="text"
-              name="prenom"
-              id="prenom"
-              class="flex flex-1 bg-gray-100 border-gray-100 rounded-r-md focus:border-gray-300"
-              placeholder="Saisir votre prenom"
-              max="20"
-              required
-            />
-          </div>
+          <label for="prenom" class="text-slate-700">Votre Prénom</label>
+
+          <input
+            type="text"
+            name="First Name"
+            placeholder="votre prénom"
+            class="px-4 py-3 w-full rounded-md placeholder-gray-400/70 text-slate-700 bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
+          />
         </fieldset>
       </div>
     </template>
     <template #footer>
-      <div class="flex justify-center text-center"> 
-        <fwb-button @click="$emit('close')" class="px-4 py-2 w-full bg-gradient-to-r from-red-400 to-red-500 hover:opacity-80 text-white font-semibold rounded-md">  {{ textesData.getLocalizedText(9) }} </fwb-button>
+      <div class="flex justify-center text-center">
+        <fwb-button
+          @click="$emit('close')"
+          class="px-4 py-2 w-full bg-gradient-to-r from-red-400 to-red-500 hover:opacity-80 text-white font-semibold rounded-md"
+        >
+          {{ textesData.getLocalizedText(9) }}
+        </fwb-button>
       </div>
     </template>
   </fwb-modal>
