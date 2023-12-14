@@ -5,6 +5,9 @@ import { FwbButton, FwbModal } from "flowbite-vue";
 import { ref, reactive, watchEffect, computed } from "vue";
 import CreateVoeuxModal from "@/components/modals/CreateVoeuxModal.vue";
 import createvoeuxbtn from "@/components/buttons/createvoeuxbtn.vue";
+import { saveUserProvide } from "../js/firebase/firbaseFunctions";
+import { useCookies } from "vue3-cookies";
+
 export default {
   name: "Accueil",
   props: {},
@@ -17,14 +20,18 @@ export default {
     function showModal() {
       isShowModal.value = true;
     }
+
     watchEffect(() => {}); // expose the state to the template
     return { closeModal, showModal, isShowModal };
   },
-  mounted() {},
+  mounted() {
+    //à réactiver après
+    // saveUserProvide();
+  },
+
   data() {
     return {};
   },
-  methods: {},
   methods: {},
   components: {
     pageFooter,
@@ -55,13 +62,17 @@ export default {
         <div
           class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center"
         >
-          <div class="mx-auto max-w-3xl text-center ">
+          <div class="mx-auto max-w-3xl text-center">
             <h1
               class="topText py-2 bg-gradient-to-r from-green-300 via-blue-200 to-purple-200 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl"
             >
-            Merry Christmas &amp;
+              Merry Christmas &amp;
 
-              <span class="sm:block sm:mt-3 text-3xl font-extrabold text-transparent sm:text-5xl topText"> Happy New Year. </span>
+              <span
+                class="sm:block sm:mt-3 text-3xl font-extrabold text-transparent sm:text-5xl topText"
+              >
+                Happy New Year.
+              </span>
             </h1>
 
             <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
@@ -71,7 +82,7 @@ export default {
 
             <div class="mt-6 md:mx-4 mx-1">
               <button @click="showModal" class="button" type="button">
-                Appuie ici pour créer ton voeux 
+                Appuie ici pour créer ton voeux
 
                 <img
                   class="button-hat"
@@ -80,7 +91,10 @@ export default {
                 />
               </button>
 
-              <createvoeuxbtn :btnLinkTo="'/personnalVoeux'" :btnTexte="'Créer ton voeux Personnel'" />
+              <createvoeuxbtn
+                :btnLinkTo="'/personnalVoeux'"
+                :btnTexte="'Créer ton voeux Personnel'"
+              />
             </div>
           </div>
         </div>
@@ -94,7 +108,7 @@ export default {
   <CreateVoeuxModal v-if="isShowModal" @close="closeModal" class="my-2" />
 </template>
 
-<style scoped> 
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap");
 body {
   background-color: #061123;
@@ -141,7 +155,7 @@ body {
   padding: 8px 16px;
   min-width: 8em;
   text-align: center;
-  font-family: "Lobster", cursive; 
+  font-family: "Lobster", cursive;
   color: #fff;
   background-image: linear-gradient(to bottom, #f12828, #c7003c, #cc1943),
     linear-gradient(to bottom, #e00446, #af1077);

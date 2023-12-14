@@ -1,12 +1,12 @@
 <template>
   <fwb-modal @close="$emit('close')" persistent class="m-0">
     <template #header>
-      <div class="flex items-center text-lg text-slate-700">Creer votre voeux</div>
+      <div class="flex items-center text-lg text-slate-700">Creer votre voeux {{ `${imageBaseUrl}${imageIndex}.png`}}</div>
     </template>
     <template #body>
       <div class="space-y-1 m-0 p-0">
         <img
-          src="@/assets/images/bg/bg_1.jpg"
+          :src="`${imageBaseUrl}${imageIndex}.png`"
           alt=""
           class="block object-cover object-center w-full rounded-md h-64"
         />
@@ -15,25 +15,22 @@
         </div>
       </div>
       <p class="text-sm md:text-base leading-relaxed text-gray-500 text-center">
-        The European Union’s General Data Protection Regulation (G.D.P.R.) goes into
-        effect on May 25 and is meant to ensure a common set of data rights in the
-        European Union. It requires organizations to notify users as soon as possible of
-        high-risk data breaches that could personally affect them.
+       {{ textesData.getVoeuxText(voeuxIndex,language) }}
       </p>
       <div class="flex flex-wrap items-center content-center justify-center">
         <div class="w-full sm:w-4/6 p-1">
           <input
             type="text"
             readonly
-            class="h-14 w-full px-2 py-2 placeholder-gray-400/70 text-slate-700 rounded-md border-slate-100 z-0 pointer-events-none"
-            :value="lienPartage"
+            class="h-14 w-full px-2 py-2 text-xs placeholder-gray-400/70 text-slate-700 rounded-md border-slate-100 z-0 pointer-events-none"
+            :value="genereLien()"
             id="lienv"
           />
         </div>
-        <div class="w-full flex items-center  justify-center sm:w-2/6 p-1">
+        <div class="w-full flex items-center justify-center sm:w-2/6 p-1">
           <button
             @click="partagerWhatsApp()"
-            class=" sm:h-14 w-full h-12 px-2 text-center text-white rounded-md bg-green-400 hover:bg-green-500"
+            class="sm:h-14 w-full h-12 px-2 text-center text-white rounded-md bg-green-400 hover:bg-green-500"
           >
             {{ textesData.getLocalizedText(5) }} <i class="fab fa-whatsapp"></i>
           </button>
@@ -50,6 +47,7 @@
             ><i class="fas fa-hand-point-down cligno2" style="color: darkgreen"></i
           ></label>
           <select
+          v-model="language"
             class="voeuxListe px-4 py-3 text-slate-700 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
           >
             <option value="fr">Français</option>
@@ -60,6 +58,7 @@
           <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
             <label for="voeuxListe" class="text-slate-700">Choisir Voeux</label>
             <select
+              v-model="voeuxIndex"
               class="voeuxListe px-4 py-3 w-full text-slate-700 rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
             >
               <option value="1" selected>Voeux #1</option>
@@ -75,11 +74,14 @@
             </select>
           </div>
           <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
-            <label for="imagesListe" class="text-slate-700">Choisir image</label>
+            <label for="imagesListe" class="text-slate-700"
+              >Choisir image {{ imageIndex }}</label
+            >
             <select
+              v-model="imageIndex"
               class="imagesListe px-4 py-3 w-full text-slate-700 rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
             >
-              <option value="1" selected>Image #1</option>
+              <option value="1">Image #1</option>
               <option value="2">Image #2</option>
               <option value="3">Image #3</option>
               <option value="4">Image #4</option>
@@ -129,13 +131,17 @@ export default {
   props: {},
 
   setup(props) {
+    const imageBaseUrl = "../../assets/images/imgs/image_";
     const textesData = ref(textesDataStore());
     watchEffect(() => {}); // expose the state to the template
-    return { textesData };
+    return { textesData,imageBaseUrl };
   },
   mounted() {},
   data() {
     return {
+      language: "fr",
+      imageIndex: "1",
+      voeuxIndex: "1",
       isMobile: {
         Android: function () {
           return navigator.userAgent.match(/Android/i);
@@ -169,7 +175,8 @@ export default {
   },
   methods: {
     genereLien() {
-      this.lienPartage = `https://192.168.43.246/briguel_voeux/?m=${this.imgSelected}&v=${this.voeuxSelected}`;
+      this.lienPartage = `https://192.168.43.246/briguel_voeux/?m=${this.imageIndex}&v=${this.voeuxIndex}`;
+    return this.lienPartage;
     },
     // Dans la méthode partagerWhatsApp()
     partagerWhatsApp() {

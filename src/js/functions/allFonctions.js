@@ -20,7 +20,9 @@ async function getVisIpAddr() {
     try {
         const response = await fetch('https://ipinfo.io/json');
         const data = await response.json();
-        return data.ip;
+        // console.log("getVisIpAddr data ",data)
+        // return data.ip;
+        return data;
     } catch (error) {
         console.error('Erreur lors de la récupération de l\'adresse IP :', error);
         return null;
@@ -31,7 +33,7 @@ async function getVisIpAddr() {
 function getBrowserLanguage() {
     const userLanguage = navigator.language || navigator.userLanguage;
     return userLanguage && userLanguage !== 'en' ? 'fr' : userLanguage;
-  }
+}
 
 // Export des fonctions pour les rendre disponibles dans d'autres fichiers
-export { sainText, generateUniqueName, getVisIpAddr ,getBrowserLanguage};
+export { sainText, generateUniqueName, getVisIpAddr, getBrowserLanguage };
