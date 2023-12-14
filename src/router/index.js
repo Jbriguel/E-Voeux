@@ -17,14 +17,19 @@ const router = createRouter({
       path: '/personnalVoeux',
       name: 'personnalVoeux',
       component: personnalVoeuxVue
-    } ,
-     { path: '/:pathMatch(.*)*', beforeEnter: (to, from, next) => { next('/404') } },
+    },
+    // {
+    //   path: '/back',
+    //   name: 'personnalVoeux',
+    //   component: personnalVoeuxVue
+    // } ,
+    { path: '/:pathMatch(.*)*', beforeEnter: (to, from, next) => { next('/404') } },
     {
       path: '/404',
       name: '404',
       component: () => import('../views/404.vue')
     }
-     
+
     // {
     //   path: '/modifierUser',
     //   name: 'editerUser',

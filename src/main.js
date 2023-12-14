@@ -26,13 +26,13 @@ const app = createApp(App)
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyADVyl2JGQSxiyl4z12EJSj324EDB_jBQM",
-    authDomain: "evoeux-a188d.firebaseapp.com",
-    projectId: "evoeux-a188d",
-    storageBucket: "evoeux-a188d.appspot.com",
-    messagingSenderId: "732089609641",
-    appId: "1:732089609641:web:4387da60fe9ade9451a8b8",
-    measurementId: "G-EYR51M1FN5"
+    apiKey: "AIzaSyCkpr7hcocyw2kuaKDdiAypxO7KJ3vV2Tc",
+  authDomain: "e-voeux.firebaseapp.com",
+  projectId: "e-voeux",
+  storageBucket: "e-voeux.appspot.com",
+  messagingSenderId: "927280062343",
+  appId: "1:927280062343:web:0b1ffb478195b4b955fd22",
+  measurementId: "G-R8H6WD0T1K"
 };
 
 // Initialize Firebase 

@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <section class="w-full h-full py-5 m-0 bg-transparent  relative">
+  <section class="w-full h-full py-5 m-0 bg-transparent relative">
     <img
       src="@/assets/images/bg/bg_1.jpg"
       loading="lazy"
@@ -38,7 +38,21 @@ export default {
       <div></div>
     </div>
     <div class="h-full w-full flex flex-col bg-transparent z-10 relative">
-      <pageHeader class="w-full fixed top-0" />
+      <header>
+        <nav
+          class="w-full fixed top-0 flex items-center justify-between p-1 bg-gray-900 bg-opacity-40 text-white"
+        >
+          <span class="navbar-brand text-white-50 font-medium ml-3"
+            ><i class="fab fa-edge"></i>-<i class="fab fa-vimeo-v"></i>oeux</span
+          >
+          <a
+            class="inline-block mx-8 my-1  mr-4 text-xs font-medium text-center uppercase align-middle "
+            href="/"
+            > 
+        <button class="px-6 py-2 text-blue-100 rounded bg-gradient-to-r from-blue-600 to-blue-400"> Accueil </button></a
+          >
+        </nav>
+      </header>
       <main>
         <div class="mt-5 md:p-4 p-2 bg-transparent flex items-center justify-center">
           <div class="w-full mx-auto">
@@ -68,7 +82,7 @@ export default {
                 <form novalidate="" action="" class="self-stretch space-y-1">
                   <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-4">
                     <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
-                      <label for="imagesListe" class="text-slate-100 "
+                      <label for="imagesListe" class="text-slate-100"
                         >Choisir image</label
                       >
                       <select
@@ -109,7 +123,10 @@ export default {
                     </p>
                   </div>
                   <div class="text-right m-2 px-5">
-                    <createvoeuxbtn  :btnLinkTo="'/'" :btnTexte="'Créer ton voeux Personnel'"  />
+                    <createvoeuxbtn
+                      :btnLinkTo="'/'"
+                      :btnTexte="'Créer ton voeux Personnel'"
+                    />
                   </div>
                 </form>
               </div>
