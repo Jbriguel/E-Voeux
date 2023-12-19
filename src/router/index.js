@@ -4,19 +4,24 @@ import accueilViewVue from '@/views/accueilView.vue';
 import personnalVoeuxVue from '@/views/personnalVoeux.vue';
 
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'home',  
+      //component: () => import('../views/hhpubView.vue')
       component: accueilViewVue
     },
     {
       path: '/personnalVoeux',
       name: 'personnalVoeux',
       component: personnalVoeuxVue
+    },
+    {
+      path: '/horacleHouse',
+      name: 'presentation',
+      component: () => import('../views/hhpubView.vue')
     },
     // {
     //   path: '/back',

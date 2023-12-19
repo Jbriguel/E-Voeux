@@ -2,12 +2,79 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   mode: "jit",
-  content: [ "./index.html",
-  "./src/**/*.{vue,js,ts,jsx,tsx}","./build/**/*.{html,js}", 'node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx}',
-  'node_modules/flowbite/**/*.{js,jsx,ts,tsx}'],
+  content: ["./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}", "./build/**/*.{html,js}", 'node_modules/flowbite-vue/**/*.{js,jsx,ts,tsx}',
+    'node_modules/flowbite/**/*.{js,jsx,ts,tsx}'],
   presets: [],
   darkMode: "class",
   theme: {
+    extend: {
+      keyframes: {
+        'fade-in-down': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-10px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        },
+        'fade-out-down': {
+          'from': {
+            opacity: '1',
+            transform: 'translateY(0px)'
+          },
+          'to': {
+            opacity: '0',
+            transform: 'translateY(10px)'
+          },
+        },
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        },
+        'fade-out-up': {
+          'from': {
+            opacity: '1',
+            transform: 'translateY(0px)'
+          },
+          'to': {
+            opacity: '0',
+            transform: 'translateY(10px)'
+          },
+        }
+      },
+      animation: {
+        'fade-in-down': 'fade-in-down 0.5s ease-out',
+        'fade-out-down': 'fade-out-down 0.5s ease-out',
+        'fade-in-up': 'fade-in-up 0.5s ease-out',
+        'fade-out-up': 'fade-out-up 0.5s ease-out'
+      },
+
+      backgroundImage: {
+        // 'hero-parallax1': "url('./assets/images/banner3.jpg')",
+        // 'hero-parallax2': "url('./assets/images/gallery_08.jpg')",
+        // 'hero-parallax3': "url('./assets/images/newsletter-bg.jpg')",
+        // 'hero-parallax4': "url('./assets/images/plat1.jpg')",
+        // 'hero-parallax5': "url('./assets/images/testimonial-bg.jpg')",
+        // 'hero-parallax6': "url('./assets/images/bg2.jpg')",
+        // 'hero-parallax7': "url('./assets/images/slider-image3.jpg')",
+
+        'image1': "url('@/assets/images/imgs/image_1.png')", 
+        'image2': "url('@/assets/images/imgs/image_2.jpg')", 
+        'image3': "url('@/assets/images/imgs/image_3.jpg')", 
+
+      }, 
+    },
+
+    // ******* //
     screens: {
       sm: "576px",
       "sm-max": { max: "576px" },

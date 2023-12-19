@@ -17,7 +17,8 @@
     "vue-cookies": "^1.8.3",
     "vue-router": "^4.2.5",
     "vue3-cookies": "^1.0.6",
-    "vuefire": "^3.1.19"
+    "vuefire": "^3.1.19",
+    "vueperslides": "^3.5.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.1",

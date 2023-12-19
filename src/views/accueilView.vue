@@ -7,6 +7,8 @@ import CreateVoeuxModal from "@/components/modals/CreateVoeuxModal.vue";
 import createvoeuxbtn from "@/components/buttons/createvoeuxbtn.vue";
 import { saveUserProvide } from "../js/firebase/firbaseFunctions";
 import { useCookies } from "vue3-cookies";
+import adsCard from "../components/cards/adsCard.vue";
+import pubCardVue from '../components/pubCard.vue';
 
 export default {
   name: "Accueil",
@@ -26,7 +28,7 @@ export default {
   },
   mounted() {
     //à réactiver après
-    // saveUserProvide();
+   // saveUserProvide();
   },
 
   data() {
@@ -40,6 +42,7 @@ export default {
     FwbModal,
     CreateVoeuxModal,
     createvoeuxbtn,
+    pubCardVue,adsCard
   },
 };
 </script>
@@ -48,9 +51,9 @@ export default {
   <section class="py-5">
     <img
       src="@/assets/images/bg/bg_1.jpg"
-      loading="lazy"
+      loading="lazy Fatou : +965 55636159"
       alt="Photo"
-      class="w-full h-full object-cover object-center absolute inset-0"
+      class="w-screen h-screen object-cover object-center absolute inset-0"
     />
 
     <div class="snow mix-blend-multiply absolute inset-0 bg-slate-900 bg-opacity-30">
@@ -58,11 +61,11 @@ export default {
     </div>
     <div class="h-full flex items-center justify-center text-white absolute inset-0">
       <pageHeader class="fixed w-full top-0" />
-      <main>
+      <main class="my-12">
         <div
-          class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center"
+          class="mx-2 max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center"
         >
-          <div class="mx-auto max-w-3xl text-center">
+          <div class="mx-2 w-full md:max-w-3xl text-center">
             <h1
               class="topText py-2 bg-gradient-to-r from-green-300 via-blue-200 to-purple-200 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl"
             >
@@ -81,7 +84,7 @@ export default {
             </p>
 
             <div class="mt-6 md:mx-4 mx-1">
-              <button @click="showModal" class="button" type="button">
+              <button @click="showModal"  class="button " type="button">
                 Appuie ici pour créer ton voeux
 
                 <img
@@ -96,6 +99,14 @@ export default {
                 :btnTexte="'Créer ton voeux Personnel'"
               />
             </div>
+             <pubCardVue class="mt-6 md:mx-4 mx-1"/>  
+            <!-- <adsCard
+      imageUrl="url_de_votre_image"
+      title="Titre de votre publicité"
+      description="Description de votre service"
+      link="lien_vers_votre_service"
+    /> -->
+            <!--  -->
           </div>
         </div>
       </main>

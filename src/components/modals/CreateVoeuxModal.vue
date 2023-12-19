@@ -1,21 +1,29 @@
 <template>
   <fwb-modal @close="$emit('close')" persistent class="m-0">
     <template #header>
-      <div class="flex items-center text-lg text-slate-700">Creer votre voeux {{ `${imageBaseUrl}${imageIndex}.png`}}</div>
+      <div class="flex items-center text-lg text-slate-700">
+        Creer votre voeux {{ imageIndex }}
+      </div>
     </template>
     <template #body>
       <div class="space-y-1 m-0 p-0">
-        <img
-          :src="`${imageBaseUrl}${imageIndex}.png`"
+        <!-- `${imageUrl}`  :src="`${state.image1}`"      src="../../assets/images/imgs/image_1.png"-->
+       <!-- <img 
+         :src="`${imageIndex}`"
           alt=""
           class="block object-cover object-center w-full rounded-md h-64"
-        />
+        /> -->
+<div class=" h-64  w-full">
+        <div :class=" `block object-contain   w-full rounded-md  h-64 ${imageIndex}`  "></div>
+     </div>
+  
+       
         <div class="flex items-center text-xs">
           <span>---</span>
         </div>
       </div>
       <p class="text-sm md:text-base leading-relaxed text-gray-500 text-center">
-       {{ textesData.getVoeuxText(voeuxIndex,language) }}
+        {{ textesData.getVoeuxText(voeuxIndex, language) }}
       </p>
       <div class="flex flex-wrap items-center content-center justify-center">
         <div class="w-full sm:w-4/6 p-1">
@@ -47,7 +55,7 @@
             ><i class="fas fa-hand-point-down cligno2" style="color: darkgreen"></i
           ></label>
           <select
-          v-model="language"
+            v-model="language"
             class="voeuxListe px-4 py-3 text-slate-700 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
           >
             <option value="fr">Français</option>
@@ -81,9 +89,9 @@
               v-model="imageIndex"
               class="imagesListe px-4 py-3 w-full text-slate-700 rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
             >
-              <option value="1">Image #1</option>
-              <option value="2">Image #2</option>
-              <option value="3">Image #3</option>
+              <option value="bg-image1">Image #1</option>
+              <option value="bg-image2">Image #2</option>
+              <option value="bg-image3">Image #3</option>
               <option value="4">Image #4</option>
               <option value="5">Image #5</option>
               <option value="6">Image #6</option>
@@ -131,14 +139,33 @@ export default {
   props: {},
 
   setup(props) {
-    const imageBaseUrl = "../../assets/images/imgs/image_";
+    // 
+
+    const gallery = ref(["image_1.png", "image_1.png"]);
+
+    function getImageUrl(name) {
+      return new URL(`../../assets/images/imgs/${name}`, import.meta.url).href;
+    }
+    //
+
+    const imageIndex = ref("1");
+    let imageUrl = ref("@/assets/images/imgs/image_1.png");
+    const imageBaseUrl = "";
     const textesData = ref(textesDataStore());
-    watchEffect(() => {}); // expose the state to the template
-    return { textesData,imageBaseUrl };
+    function getImageUrl() {
+      imageUrl.value = `@/assets/images/imgs/image_${imageIndex.value}.png`;
+    }
+
+    const state = reactive({image1:"../../assets/images/imgs/image_1.png",image2:"@/assets/images/imgs/image_1.png"});
+    watchEffect(() => {
+      getImageUrl();
+    }); // expose the state to the template
+    return { textesData, imageBaseUrl, imageUrl, getImageUrl,state };
   },
   mounted() {},
   data() {
     return {
+   
       language: "fr",
       imageIndex: "1",
       voeuxIndex: "1",
@@ -176,7 +203,7 @@ export default {
   methods: {
     genereLien() {
       this.lienPartage = `https://192.168.43.246/briguel_voeux/?m=${this.imageIndex}&v=${this.voeuxIndex}`;
-    return this.lienPartage;
+      return this.lienPartage;
     },
     // Dans la méthode partagerWhatsApp()
     partagerWhatsApp() {
