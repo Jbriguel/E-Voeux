@@ -2,19 +2,39 @@
 import pageFooter from "@/components/pageComponents/pageFooter.vue";
 import pageHeader from "@/components/pageComponents/pageHeader.vue";
 import { FwbButton, FwbModal } from "flowbite-vue";
-import { ref, reactive, watchEffect, computed } from "vue";
+import { ref, reactive, watchEffect, onMounted, computed } from "vue";
 import CreateVoeuxModal from "@/components/modals/CreateVoeuxModal.vue";
+import showVoeuxModalVue from "../components/modals/showVoeuxModal.vue";
+import showPersoVoeuxModal from "../components/modals/showPersoVoeuxModal.vue";
 import createvoeuxbtn from "@/components/buttons/createvoeuxbtn.vue";
-import { saveUserProvide } from "../js/firebase/firbaseFunctions";
+import {
+  saveUserProvide,
+  getVoeuxFormOnline,
+  getVoeuxData,
+} from "../js/firebase/firbaseFunctions";
 import { useCookies } from "vue3-cookies";
 import adsCard from "../components/cards/adsCard.vue";
-import pubCardVue from '../components/pubCard.vue';
-
+import pubCardVue from "../components/pubCard.vue";
+import { RouterLink, RouterView, useRoute, useRouter } from "vue-router";
+import { voeuxData } from "../js/firebase/voeuxConverter";
+import { textesDataStore } from "../stores";
 export default {
   name: "Accueil",
   props: {},
   setup(props) {
+
+    const textesData = ref(textesDataStore()); 
+    const router = useRouter();
+    const route = useRoute();
+
     const isShowModal = ref(false);
+    const imageIndex = ref("1");
+    const voeuxIndex = ref("1");
+    const lang = ref("fr");
+    const prenom = ref("");
+    const contenu_VoeuxPerso = ref("");
+    const showVoeux = ref(false);
+    const showVoeux3 = ref(false);
 
     function closeModal() {
       isShowModal.value = false;
@@ -23,12 +43,90 @@ export default {
       isShowModal.value = true;
     }
 
+    function closeModal2() {
+      showVoeux.value = false;
+      imageIndex.value = "";
+      voeuxIndex.value = "";
+      lang.value = "fr";
+      prenom.value = "";
+    }
+
+    function closeModal3() {
+      showVoeux3.value = false;
+      imageIndex.value = "";
+      contenu_VoeuxPerso.value = "";
+      voeuxIndex.value = "";
+      lang.value = "fr";
+      prenom.value = "";
+    }
+
+    onMounted(() => {
+      getUrlQueryParams();
+    });
+
+    async function getUrlQueryParams() {
+      //router is async so we wait for it to be ready
+      await router.isReady();
+      //once its ready we can access the query params
+      console.log(route.query);
+
+      if (route.query.s == "1") {
+        imageIndex.value = route.query.m;
+        voeuxIndex.value = route.query.v;
+        lang.value = route.query.l;
+        prenom.value = decodeURIComponent(route.query.p);
+        if (
+          voeuxIndex.value.trim !== "" &&
+          lang.value.trim != "" &&
+          prenom.value.trim != "" &&
+          imageIndex.trim != ""
+        ) {
+          showVoeux.value = true;
+        }
+      } else {
+        getVoeuxData(route.query.s).then(
+          /**
+           *  @param {voeuxData} value
+           */
+          function (value) {
+            console.log("value : ", value);
+            if (value !== null) {
+              imageIndex.value = value.imageIndex;
+              voeuxIndex.value = "202";
+              lang.value = "202";
+              prenom.value = value.prenom;
+              contenu_VoeuxPerso.value = value.contenu;
+              if (
+                voeuxIndex.value.trim !== "" &&
+                lang.value.trim != "" &&
+                prenom.value.trim != "" &&
+                imageIndex.trim != ""
+              ) {
+                showVoeux3.value = true;
+              }
+            }
+          }
+        );
+      }
+    }
     watchEffect(() => {}); // expose the state to the template
-    return { closeModal, showModal, isShowModal };
+    return {
+      closeModal,
+      showModal,
+      isShowModal,
+      imageIndex,
+      voeuxIndex,
+      lang,
+      prenom,
+      showVoeux,
+      showVoeux3,
+      closeModal2,
+      closeModal3,
+      contenu_VoeuxPerso,textesData
+    };
   },
   mounted() {
-    //à réactiver après
-   // saveUserProvide();
+    saveUserProvide();
   },
 
   data() {
@@ -41,52 +139,52 @@ export default {
     FwbButton,
     FwbModal,
     CreateVoeuxModal,
+    showVoeuxModalVue,
+    showPersoVoeuxModal,
     createvoeuxbtn,
-    pubCardVue,adsCard
+    pubCardVue,
+    adsCard,
   },
 };
 </script>
 
 <template>
-  <section class="py-5">
+  <section class="py-5 m-0">
     <img
-      src="@/assets/images/bg/bg_1.jpg"
-      loading="lazy Fatou : +965 55636159"
+      src="@/assets/images/bg/bg_6.jpg"
+      loading="lazy"
       alt="Photo"
-      class="w-screen h-screen object-cover object-center absolute inset-0"
+      class="w-full h-full object-cover object-center inset-0 fixed"
     />
 
-    <div class="snow mix-blend-multiply absolute inset-0 bg-slate-900 bg-opacity-30">
+    <div class="snow mix-blend-multiply fixed inset-0 bg-slate-900 bg-opacity-30">
       <div></div>
     </div>
-    <div class="h-full flex items-center justify-center text-white absolute inset-0">
+    <div class="h-full md:flex    items-center justify-center content-center text-white absolute inset-0">
       <pageHeader class="fixed w-full top-0" />
-      <main class="my-12">
-        <div
-          class="mx-2 max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center"
-        >
+      <main class="md:my-12 my-10 bg-transparent">
+        <div class="mx-2 max-w-screen-xl px-4 py-10  flex lg:h-screen  items-center">
           <div class="mx-2 w-full md:max-w-3xl text-center">
             <h1
-              class="topText py-2 bg-gradient-to-r from-green-300 via-blue-200 to-purple-200 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl"
+              class="topText font-extrabold py-2 bg-gradient-to-r from-green-300 via-blue-200 to-purple-200 bg-clip-text text-3xl text-transparent sm:text-5xl"
             >
-              Merry Christmas &amp;
+             Happy New Year
 
               <span
                 class="sm:block sm:mt-3 text-3xl font-extrabold text-transparent sm:text-5xl topText"
               >
-                Happy New Year.
+               2024
               </span>
             </h1>
 
             <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
-              tenetur fuga ducimus numquam ea!
+              {{ textesData.getLocalizedText(10) }} 
             </p>
 
             <div class="mt-6 md:mx-4 mx-1">
-              <button @click="showModal"  class="button " type="button">
-                Appuie ici pour créer ton voeux
-
+              <button @click="showModal" class="animate-bounce button " type="button">
+               
+ {{ textesData.getLocalizedText(13) }} 
                 <img
                   class="button-hat"
                   src="https://res.cloudinary.com/freecodez/image/upload/v1701705719/images/guidvrtf8kre7pc3jdk5.webp"
@@ -96,40 +194,50 @@ export default {
 
               <createvoeuxbtn
                 :btnLinkTo="'/personnalVoeux'"
-                :btnTexte="'Créer ton voeux Personnel'"
+                :btnTexte="textesData.getLocalizedText(12)"
               />
             </div>
-             <pubCardVue class="mt-6 md:mx-4 mx-1"/>  
-            <!-- <adsCard
-      imageUrl="url_de_votre_image"
-      title="Titre de votre publicité"
-      description="Description de votre service"
-      link="lien_vers_votre_service"
-    /> -->
-            <!--  -->
+           <hr class="my-10" />
+            <pubCardVue class="mt-6 md:mx-4 mx-1" /> 
           </div>
         </div>
       </main>
 
-      <hr class="my-4" />
-      <pageFooter />
+      <hr class="my-10" />
+      <pageFooter class="fixed bottom-0"/>
     </div>
   </section>
 
   <CreateVoeuxModal v-if="isShowModal" @close="closeModal" class="my-2" />
+  <showVoeuxModalVue
+    v-if="showVoeux"
+    @close="closeModal2"
+    class="my-2"
+    :imageIndex="imageIndex"
+    :voeuxIndex="voeuxIndex"
+    :lang="lang"
+    :prenom="prenom"
+  />
+  <showPersoVoeuxModal
+    v-if="showVoeux3"
+    @close="closeModal3"
+    class="my-2"
+    :imageIndex="imageIndex"
+    :contenu="contenu_VoeuxPerso"
+    :prenom="prenom"
+  />
 </template>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap");
 body {
   background-color: #061123;
-  height: 100vh;
-  display: grid;
+  height: 100vh; 
   justify-content: center;
   align-content: center;
 }
 .topText {
-  font-family: "Mountains of Christmas", serif;
+  font-family:'Marko One', serif;
 }
 
 .snow {
@@ -159,15 +267,15 @@ body {
 }
 
 /*  */
-.button {
+/* .button {
   position: relative;
   border: 1px solid transparent;
   border-radius: 6px;
   padding: 8px 16px;
   min-width: 8em;
   text-align: center;
-  font-family: "Lobster", cursive;
   color: #fff;
+  font-family: "Poppins";
   background-image: linear-gradient(to bottom, #f12828, #c7003c, #cc1943),
     linear-gradient(to bottom, #e00446, #af1077);
   background-clip: padding-box, border-box;
@@ -176,6 +284,36 @@ body {
     0 2px 4px rgb(0 0 0 / 0.25);
   transition: 0.2s;
   will-change: transform;
+} */
+
+/* Style de base */
+.button {
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 16px;
+  min-width: 8em;
+  text-align: center;
+  color: #fff;
+  font-family: "Poppins";
+  background-image: linear-gradient(to bottom, #f12828, #c7003c, #cc1943),
+    linear-gradient(to bottom, #e00446, #af1077);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.25), inset 0 -1px rgb(0 0 0 / 0.1),
+    0 2px 4px rgb(0 0 0 / 0.25);
+  transition: 0.2s;
+  will-change: transform;
+  width: 300px;
+}
+
+/* Media query pour les appareils mobiles */
+@media screen and (max-width: 768px) {
+  .button {
+    width: 100%; /* Vous pouvez ajuster la largeur selon vos besoins */
+    max-width: 300px; /* Optionnel : définissez une largeur maximale */
+    margin: 0 auto; /* Centrer le bouton */
+  }
 }
 
 .button:active {

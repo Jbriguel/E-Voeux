@@ -57,9 +57,7 @@
                 <div class="p-5 bg-white border rounded shadow-sm">
                   <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center flex-no-shrink text-white mr-6">
-                      
-                        <h3 class="  text-slate-800">Horacle House</h3>
-                   
+                      <h3 class="text-slate-800">Horacle House</h3>
                     </div>
                     <div>
                       <button
@@ -80,21 +78,41 @@
                   <nav class="flex-col">
                     <ul class="navbar-list">
                       <li class="navbar-item">
-                        <a href="#" class="navbar-link" data-navbar-link  @click="isMenuOpen = false">Acceuil</a>
+                        <a
+                          href="#"
+                          class="navbar-link"
+                          data-navbar-link
+                          @click="isMenuOpen = false"
+                          >Acceuil</a
+                        >
                       </li>
 
                       <li class="navbar-item">
-                        <a href="#about" class="navbar-link" data-navbar-link  @click="isMenuOpen = false">A propos</a>
+                        <a
+                          href="#about"
+                          class="navbar-link"
+                          data-navbar-link
+                          @click="isMenuOpen = false"
+                          >A propos</a
+                        >
                       </li>
 
                       <li class="navbar-item">
-                        <a href="#offre" class="navbar-link" data-navbar-link  @click="isMenuOpen = false"
+                        <a
+                          href="#offre"
+                          class="navbar-link"
+                          data-navbar-link
+                          @click="isMenuOpen = false"
                           >Spécial Offre</a
                         >
                       </li>
 
                       <li class="navbar-item">
-                        <a href="#services" class="navbar-link" data-navbar-link  @click="isMenuOpen = false"
+                        <a
+                          href="#services"
+                          class="navbar-link"
+                          data-navbar-link
+                          @click="isMenuOpen = false"
                           >Services</a
                         >
                       </li>
@@ -106,7 +124,7 @@
           </div>
         </div>
 
-        <a href="#" class="btn">
+        <a   class="btn"   aria-label="Chat on WhatsApp" href="https://wa.me/22362828003">
           <i aria-hidden="true" class="fab fa-whatsapp"></i>
           <span>Me contacter</span>
         </a>
@@ -132,18 +150,22 @@
           <div class="container">
             <div class="hero-content">
               <p class="hero-subtitle">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Créez une identité visuelle unique et captivante.
               </p>
 
-              <h2 class="h2 hero-title">Lorem ipsum dolor sit amet, consectetur .</h2>
-
+              <h2 class="h2 hero-title">
+                Horacle House : L'Art de l'Innovation Créative
+              </h2>
               <p class="hero-text">
-                Morbi sed lacus nec risus finibus feugiat et fermentum nibh. Pellentesque
-                vitae ante at elit fringilla ac at purus.
+                Cultivez votre identité, inspirez par votre créativité. Découvrez nos
+                services pour propulser votre présence.
               </p>
 
               <div class="flex flex-row items-center">
-                <button class="btn m-2">Contacter</button>
+                <a aria-label="Chat on WhatsApp" href="https://wa.me/22362828003">
+                  <button class="btn m-2">Contacter</button>
+                </a>
+
                 <a href="/" class="m-2">
                   <span class="rounded-circle bg-slate-50">
                     <i class="md:p-5 p-5 fab fa-edge text-red-500"></i>
@@ -200,7 +222,7 @@
                 </span>
               </p>
               <a
-                href="../assets/hh/images/flyer_HoracleHouse.jpg"
+                :href="flyer"
                 download="flyer_HoracleHouse.jpg"
                 target="_blank"
               >
@@ -242,13 +264,14 @@
                 Éclat des Fêtes : Calendriers & Cartes de Vœux Personnalisés !
               </h4>
               <p class="text-gray-600">
-                <span class="text-gray-900">Missguided</span> Créez des souvenirs durables
-                cette saison des fêtes avec nos calendriers et cartes de vœux uniques.
-                Donnez vie à vos moments spéciaux et partagez la joie avec des designs
-                personnalisés et une qualité exceptionnelle.
+                Créez des souvenirs durables cette saison des fêtes avec nos calendriers
+                et cartes de vœux uniques. Donnez vie à vos moments spéciaux et partagez
+                la joie avec des designs personnalisés et une qualité exceptionnelle.
               </p>
               <div class="flex items-baseline mt-1">
-                <button class="btn animate-pulse">✨ Essayer maintenant</button>
+                <a aria-label="Chat on WhatsApp" :href="profiterOffre_WhatsApp()">
+                   <button class="btn animate-pulse">✨ Essayer maintenant</button>
+                </a> 
               </div>
             </div>
             <svg
@@ -308,46 +331,7 @@
         </div>
         <!--  -->
         <!--  -->
-        <!-- <section class="section about bg-gray-50" id="offre">
-          <div class="container md:flex flex-row-reverse">
-            <div class="about-content">
-              <h2 class="h2 section-title underline no-underline">Spécial Offre</h2>
-
-              <p class="about-text">
-                In dictum aliquam turpis lacinia iaculis. Fusce vel malesuada magna. Nulla
-                vel maximus risus. Donec volutpat metus lacinia risus accumsan, ac
-                bibendum libero efficitur. Pellentesque nec nisi sit amet magna tempus
-                hendrerit ut a odio.
-              </p>
-
-              <p class="about-text">
-                Praesent rhoncus commodo tortor, id pulvinar nisl blandit at. Nulla
-                facilisi. Quisque turpis ante, vehicula condimentum arcu.
-              </p>
-              <div class="flex justify-center">
-                <button class="btn animate-bounce">✨ Béneficier de l'offre</button>
-              </div>
-            </div>
-
-            <figure class="about-banner">
-              <img
-                src="@/assets/hh/images/offer.jpg"
-                width="700"
-                height="532"
-                loading="lazy"
-                alt="about banner"
-                class="w-100 banner-animation"
-              />
-            </figure>
-          </div>
-        </section> -->
-
-        <!--  -->
-        <!-- Carousel Body -->
-
-        <!-- 
-      - #SERVICE
-    -->
+       
 
         <section class="section service" id="services">
           <div class="container">
@@ -434,6 +418,7 @@ import { VueperSlides, VueperSlide } from "vueperslides";
 import { ref, watchEffect, reactive, onMounted } from "vue";
 import "vueperslides/dist/vueperslides.css";
 import "@/assets/hh/css/style.css";
+
 export default {
   name: "HHpresentation",
   components: {
@@ -442,7 +427,7 @@ export default {
     VueperSlide,
   },
   setup(props) {
-    const logo = ref();
+    const flyer = ref();
     let isMenuOpen = ref(false);
     function toggleNav() {
       isMenuOpen.value = !isMenuOpen.value;
@@ -466,13 +451,22 @@ export default {
             .default,
         },
       ];
-
-      // logo.value = (
-      //   await import(/* @vite-ignore */ `@/assets/images/imgs/image_1.png`)
-      // ).default;
+// Graphic Design flyer.pdf
+      flyer.value = (
+        await import(/* @vite-ignore */ `@/assets/hh/images/flyer_HoracleHouse.jpg`)
+      ).default;
     });
 
-    return { logo, sliderState, isMenuOpen, toggleNav };
+
+    function profiterOffre_WhatsApp() {
+      const text = "Bonjour Horacle House, j'aimerais profiter de votre Spécial offre 'Éclat des Fêtes'.";
+      const message =
+        encodeURIComponent(text) ;
+      return "https://wa.me/22362828003?text="+ message;
+       
+    };
+
+    return { flyer, sliderState, isMenuOpen, toggleNav,profiterOffre_WhatsApp };
   },
   data() {
     return {

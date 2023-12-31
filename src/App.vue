@@ -1,5 +1,19 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
+<script>
+import { RouterLink, RouterView, useRoute } from "vue-router";
+import { ref, watchEffect } from "vue";
+export default {
+  setup() {
+    function getUrlData() {const route = useRoute();
+      console.log("data : ", route.query);
+      return true;
+    }
+
+    return { getUrlData };
+  },
+  mounted() {
+    this.getUrlData();
+  },
+};
 </script>
 
 <template>
@@ -10,22 +24,23 @@ import { RouterLink, RouterView } from "vue-router";
 
 <style lang="scss">
 @import "@/assets/base.css";
-@font-face {
-  font-family: "Poppins";
-  src: local("Poppins"), url(./assets/) format("truetype");
+// @font-face {
+//   font-family: "Poppins";
+//   src: local("Poppins"), url(./assets/) format("truetype");
+// }
+
+// #here {
+//   margin: 0 auto;
+//   background-color: white;
+//   font-weight: normal;
+//   font-family: "Poppins";
+//   min-height: 100vh;
+//   margin-bottom: 0px;
+// }
+* {
+  font-family: 'Poppins';
 }
 
-#here {
-  margin: 0 auto;
-  background-color: white;
-  font-weight: normal;
-  font-family: "Poppins";
-  min-height: 100vh;
-  margin-bottom: 0px;
-}
-* {
-  font-family: "Poppins";
-}
 .textBlackShadow {
   --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.344))
     drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));

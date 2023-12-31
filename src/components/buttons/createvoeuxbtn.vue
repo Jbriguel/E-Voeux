@@ -32,11 +32,12 @@ props:
   box-sizing: border-box;  
   border: 1px solid transparent;
   border-radius: 6px;
-  padding: 8px 16px;
+  padding: 8px 20px;
   min-width: 8em;
   font-family: "Lobster", cursive; 
   line-height: 26px; 
   text-align: center;
+  font-family: 'Poppins';
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
   background-image: linear-gradient(to bottom, #f12828, #c7003c, #cc1943),
@@ -54,6 +55,15 @@ props:
   -moz-transition: 500ms linear;
   -o-transition: 500ms linear;
   transition: 500ms linear;
+ 
+  width: 300px; /* Taille par défaut */
+}
+
+/* Pour les écrans mobiles ou de taille inférieure à une certaine limite */
+@media (max-width: 767px) {
+  .element {
+    width: 100%; /* Taille large pour les écrans mobiles */
+  }
 }
 
 .buttonCreateVoeux::before {

@@ -15,6 +15,10 @@ export const textesDataStore = defineStore('textesData', {
         "Choisir le voeux",
         "Votre prenom",
         "Fermer"
+        , "Créez et Partagez Vos Vœux Personnalisés!",
+        "Essayer Aussi",
+        "Créer un voeux Personnel",
+        "Appuie ici pour créer un voeux"
       ],
       "en": [
         "Your wishes with you.",
@@ -26,7 +30,10 @@ export const textesDataStore = defineStore('textesData', {
         "Choose image",
         "Choose your wish",
         "Your name",
-        "Cancel"
+        "Cancel",
+        "Create and Share Your Personalized Wishes!",
+        "Try it too",
+        "Create a Personal wish", "Click here to create a wish"
       ],
     },
     images: [
@@ -34,27 +41,31 @@ export const textesDataStore = defineStore('textesData', {
       "@/assets/images/imgs/image_1.png",
     ],
     voeux: {
-      "fr": ["Quel meilleur message puis-je t’adresser que celui-ci : profite de cette année comme jamais ! 2020 est placé sous le signe de la joie et de la fête, j’en suis convaincu. J’espère que l’on se verra très bientôt pour célébrer de bons moments, en attendant, je te souhaite une très bonne année 2020.",
-        "Je te souhaite bonheur et bonne santé pour la nouvelle année, mais surtout plein de magnifiques surprises, de sentiers aventureux, d’audaces et de folies ! Que 2020 soit étonnante ! Bonne année !",
-        "Quelle joie et bonheur de te compter parmi mes amis. Non, je ne suis pas saoul, je tiens juste à te faire savoir, alors que la nouvelle année, commence, à quel point je tiens à toi. Très bonne année mon ami !",
-        "2020 débute, c’est donc l’occasion pour moi de te souhaiter que tes projets les plus ambitions s’accomplissent. Que cette année t’accorde de l’amour et prospérité, accomplissements et bonheurs en tous genres !",
-        "Je te souhaite évidemment une bonne année, mais j’y tiens, le plus important est que tu gardes une excellente santé ! C’est tellement important, même si on te la rabâche tous les ans ! Que cette nouvelle année te sois douce !",
-        "J’espère que tu as passé de belles fêtes de Noël avec ta famille et que tu profites bien du réveillon. J’espère que tu vas bien et que nous pourrons nous voir très prochainement, sans laisser filer le temps qui passe !",
-        "Bonne année ! Ça y est, nous sommes déjà en 2020 ! Fais-tu bien la fête pour célébrer cette nouvelle année ? Ce réveillon 2020 est-il un bon cru ? J’imagine que oui ! Profite de ce moment avec tes proches et attention aux excès ;) !",
-        "Voici une nouvelle année qui commence ! Pas la peine de prendre de bonnes résolutions cette année, comme toujours tu donneras le meilleur de toi pour tes proches et tes amis, reste comme ça ! Je pense à toi et te souhaite une excellente année 2020 !",
-        "Je te souhaite une magnifique année 2020, qu’elle te soit belle et pleine de promesses. Je suis certain que cette nouvelle année t’apportera confiance et assurance, pour dissiper les doutes, et plein de courage pour affronter les adversités ! Je te souhaite une très bonne année 2020.",
-        "Cette année, je suis sûr que tu parviendras à mener à bien tous tes projets et que 2020 sera bien remplie pour toi et ta famille. Amours, amitiés, bonheurs de la vie quotidienne, je te souhaite le meilleur et que tes accomplissements te rendent heureux !"
-      ], "en": ["May you enjoy the time of the holidays with your nearest and dearest, family and friends, those who love you and care for you. This is a time to be thankful and to look forward to what the future has to bring.",
-        "I wish you a year full of happiness and beautiful surprises. Sunny days if not in the sky it will be in your heart and also in that of your loved ones. Happy New Year 2020",
-        "We wish you a holiday season full of affection and joy, that the new year 2020 will be full of happiness, good surprises and prosperity. May all these wishes come true. Happy New Year 2020!",
-        "May this new year 2020 bring you success in everything you undertake. May the difficulties of this new year be spared you all. May happiness be in your hearts and in those of your loved ones.  Happy New Year",
-        "With this greeting card, and for the new year 2020, I wish you to dare.  Dare to make your dreams come true. Dare to make your projects come true. Dare to enjoy your happiness. Dare to appreciate the love you are given. Dare to have all the success you deserve.  It's all inside you, you just have to dare. Happy New Year 2020",
-        "What a wonderful year has just passed! For the coming year, we wish you lots of love and smiles, lots of dreams and surprises, and lots of joy and success",
-        "The new year marks the beginning of a new page: new people to meet, new adventures to experience, and new memories to create! I wish you a lot of happiness for all these new things, and a beautiful year 2020",
-        "This year has once again flown by, but one thing's for sure: It's been filled with love and happiness!  We wish you a happy new year, full of emotions, smiles, friendships, and beautiful projects! Happy New Year, 2020!",
-        "I would like to offer you my best wishes for a New Year filled with peace, health and happiness. (J'aimerais t'offrir mes meilleurs voeux pour une nouvelle année remplie de paix, de santé et de bonheur)",
-        "This year has come to an end and it will take away all the pain and mistakes. Now you have a brand new beginning to look forward to. Happy New Years, with love from all of us!"
-      ]
+      "fr": [
+        "Que cette année soit le théâtre de votre métamorphose, où chaque défi devient une opportunité et chaque épreuve une leçon précieuse. Meilleurs vœux pour une année transformative et éblouissante !",
+        "Puissiez-vous être entouré(e) de moments qui volent votre souffle et d'instants qui touchent votre cœur au plus profond. Que 2024 soit une symphonie d'émotions intenses et de souvenirs inoubliables !",
+        "Que cette nouvelle année déverse sur vous une pluie d'étoiles filantes, chacune portant vos souhaits les plus chers. Que chaque étoile vous rappelle votre lumière intérieure. Bonne année lumineuse et pleine d'émotions !",
+        "Que chaque battement de votre cœur soit une mélodie enchanteresse, que chaque pas que vous faites soit une danse vers la réalisation de vos rêves. Que 2024 soit une symphonie magique et émouvante !",
+        "Que cette année vous connecte à des moments si précieux qu'ils brillent comme des gemmes dans votre mémoire. Puissent ces émotions être votre richesse éternelle. Meilleurs vœux pour une année brillamment émouvante !",
+        "Puissent vos jours être tissés de moments qui suspendent le temps, de rires qui résonnent dans l'éternité et de sourires qui éclairent votre chemin. Bonne et émouvante année 2024 !",
+        "Que chaque aurore de 2024 vous enrobe dans sa lumière douce et apaise votre âme. Que chaque crépuscule vous chante une berceuse de tranquillité. Meilleurs vœux pour une année émotionnellement riche et apaisante !",
+        "Puissiez-vous écrire votre histoire avec des pages d'une beauté si poignante qu'elles captivent le monde et réchauffent les cœurs. Bonne année, pleine de récits mémorables et d'émotions intenses !",
+        "Que chaque émotion que vous ressentez en 2024 soit une couleur vive sur la toile de votre vie, créant un tableau éblouissant et émouvant. Meilleurs vœux pour une année artistiquement riche et émotionnellement vibrante !",
+        "Que chaque instant de cette nouvelle année résonne comme une note parfaite dans la symphonie de votre vie. Puissent les mélodies de 2024 être une harmonie d'amour, de paix et d'accomplissement."
+
+      ], "en":
+        [
+          "May this year be the stage for your transformation, where every challenge becomes an opportunity and every trial a precious lesson. Best wishes for a transformative and dazzling year!",
+          "May you be surrounded by moments that take your breath away and instants that touch your heart profoundly. May 2024 be a symphony of intense emotions and unforgettable memories!",
+          "May this new year shower upon you a rain of shooting stars, each carrying your dearest wishes. May each star remind you of your inner light. Happy and luminous New Year filled with emotions!",
+          "May each beat of your heart be an enchanting melody, may each step you take be a dance toward the realization of your dreams. May 2024 be a magical and moving symphony!",
+          "May this year connect you to moments so precious they shine like gems in your memory. May these emotions be your eternal wealth. Best wishes for a brilliantly emotional year!",
+          "May your days be woven with moments that suspend time, laughter that echoes into eternity, and smiles that light up your path. Happy and emotionally moving year 2024!",
+          "May every dawn of 2024 envelop you in its gentle light and soothe your soul. May every dusk sing you a lullaby of tranquility. Best wishes for an emotionally rich and soothing year!",
+          "May you write your story with pages so poignant in beauty that they captivate the world and warm hearts. Happy New Year, filled with memorable tales and intense emotions!",
+          "May every emotion you feel in 2024 be a vivid color on the canvas of your life, creating a dazzling and emotionally vibrant masterpiece. Best wishes for an artistically rich and emotionally resonant year!",
+          "May every moment of this new year resonate like a perfect note in the symphony of your life. May the melodies of 2024 be a harmony of love, peace, and fulfillment."
+        ]
     }
   }),
   actions: {
@@ -89,7 +100,7 @@ export const textesDataStore = defineStore('textesData', {
         return '---';
       }
     },
-    getImage(index){ 
+    getImage(index) {
 
       if (index >= 0 && index < this.images.length) {
         return this.images[index];

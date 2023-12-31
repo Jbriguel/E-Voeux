@@ -41,6 +41,11 @@ span.s1 {
   color: #3C4447;
 }
 
+
+* {
+  font-family: 'Poppins';
+} 
+
 span.s2 {
   font-weight: 800;
   position: absolute;

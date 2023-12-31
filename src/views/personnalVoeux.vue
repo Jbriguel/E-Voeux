@@ -3,29 +3,168 @@ import pageFooter from "@/components/pageComponents/pageFooter.vue";
 import pageHeader from "@/components/pageComponents/pageHeader.vue";
 import { ref, reactive, watchEffect, computed } from "vue";
 import createvoeuxbtn from "@/components/buttons/createvoeuxbtn.vue";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
+import { getVoeuxFormOnline, saveVoeux, printTime } from "../js/firebase/firbaseFunctions";
+import linkCopyModal from "../components/modals/linkCopyModal.vue";
 export default {
   name: "AddUserView",
   props: {},
 
   setup(props) {
-    watchEffect(() => {}); // expose the state to the template
-    return {};
+    const targetRef = ref(null);
+
+    function getImageUrl(index) {
+      const ind = parseInt(index, 10);
+      return imagesState.data[ind-1].image;
+    }
+    const imageIndex = ref("1");
+    const prenom = ref("");
+    const monVoeux = ref("");
+
+    let imagesState = reactive({ data: [] });
+
+    watchEffect(async () => {
+      imagesState.data = [
+        {
+          key: 1,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_1.jpg`))
+            .default,
+        },
+        {
+          key: 2,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_2.jpg`))
+            .default,
+        },
+        {
+          key: 3,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_3.jpg`))
+            .default,
+        },
+        {
+          key: 4,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_4.jpg`))
+            .default,
+        },
+        {
+          key: 5,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_5.jpg`))
+            .default,
+        },
+        {
+          key: 6,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_6.jpg`))
+            .default,
+        }, {
+          key: 7,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_7.jpg`))
+            .default,
+        }, {
+          key: 8,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_8.jpg`))
+            .default,
+        }, {
+          key: 9,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_9.jpg`))
+            .default,
+        }, {
+          key: 10,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_10.jpg`))
+            .default,
+        } , {
+          key: 11,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_11.jpg`))
+            .default,
+        }  , {
+          key: 12,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_12.jpg`))
+            .default,
+        } , {
+          key: 13,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_13.jpg`))
+            .default,
+        } , {
+          key: 14,
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_14.jpg`))
+            .default,
+        } 
+      ];
+    });
+    return { getImageUrl, imagesState, imageIndex, prenom, monVoeux };
   },
   mounted() {},
   data() {
-    return {};
+    return {
+      showLoader: false,
+      showLink: false,
+      isLoading: false,
+      fullPage: true,
+      idVoeux: new Date().toLocaleTimeString(),
+      lienPartage: "https://",
+    };
   },
-  methods: {},
-  methods: {},
+
   components: {
     pageFooter,
     pageHeader,
     createvoeuxbtn,
+    Loading,
+    linkCopyModal,
+  },
+  methods: {
+//  e.preventDefault();
+checkForm: async function (e) {
+  if (this.prenom.trim() !== "" && this.monVoeux.trim() !== "") { 
+    this.isLoading = true;
+    this.idVoeux = this.prenom.replace(/\s+/g, '')+"."+printTime();
+    try {
+      let value = await saveVoeux(this.idVoeux, this.monVoeux, this.prenom, this.imageIndex);
+      if (value !== null) {
+        //this.idVoeux = value;
+        this.showLink = true;
+         console.log("idVoeuxf : ", this.idVoeux);
+      } else {
+        this.showLink = false;
+        console.log("erreur idVoeux : ");
+      }
+    } catch (error) {
+      console.error("Erreur lors de la sauvegarde des vœux :", error);
+      this.showLink = false;
+    } finally {
+      console.log("ended "); 
+      this.isLoading = false;
+    }
+  } else {
+    console.log("erreur, champs requis.");
+    this.isLoading = false;
+  }
+},
+    submit() {
+      let loader = this.$loading.show({
+        // Optional parameters
+        container: this.fullPage ? null : this.$refs.formContainer,
+        canCancel: true,
+        onCancel: this.onCancel,
+      });
+      // simulate AJAX
+      setTimeout(() => {
+        loader.hide();
+      }, 5000);
+    },
+    genereLien() {
+      this.lienPartage = `https://e-voeux.web.app/?m=${this.imageIndex}&v=202&l=en&p=${encodeURIComponent(this.prenom)}&s=${this.idVoeux}`;
+
+      return this.lienPartage;
+    },
+    onCancel() {
+      console.log("User cancelled the loader.");
+    },
   },
 };
 </script>
 
 <template>
+  <linkCopyModal  :link="genereLien()" v-if="showLink==true" @close="showLink=false" :prenom="prenom" />
   <section class="w-full h-full py-5 m-0 bg-transparent relative">
     <img
       src="@/assets/images/bg/bg_1.jpg"
@@ -46,14 +185,19 @@ export default {
             ><i class="fab fa-edge"></i>-<i class="fab fa-vimeo-v"></i>oeux</span
           >
           <a
-            class="inline-block mx-8 my-1  mr-4 text-xs font-medium text-center uppercase align-middle "
+            class="inline-block mx-8 my-1 mr-4 text-xs font-medium text-center uppercase align-middle"
             href="/"
-            > 
-        <button class="px-6 py-2 text-blue-100 rounded bg-gradient-to-r from-blue-600 to-blue-400"> Accueil </button></a
+          >
+            <button
+              class="px-6 py-2 font-medium text-blue-100 rounded bg-gradient-to-br from-red-600 to-red-400"
+            >
+              Accueil
+            </button></a
           >
         </nav>
       </header>
-      <main>
+      <main  >
+         
         <div class="mt-5 md:p-4 p-2 bg-transparent flex items-center justify-center">
           <div class="w-full mx-auto">
             <h1
@@ -61,9 +205,10 @@ export default {
             >
               Voeux Personnalisé
             </h1>
-            <p class="my-4 text-center text-white">
-              <span class="font-medium text-center">Modular and versatile.</span>Fugit
-              vero facilis dolor sit neque cupiditate minus esse accusamus cumque at.
+            <p class="my-4 text-center text-white md:text-lg text-md">
+              <span class="font-medium text-center"
+                >Exprimez Votre Créativité en Vœux!</span
+              >
             </p>
             <!--  -->
             <div class="xl:container grid gap-4 md:mx-auto mx-1 xl:grid-cols-5">
@@ -72,20 +217,21 @@ export default {
                 class="w-full xl:col-span-2 rounded-md md:my-4 flex items-center justify-center"
               >
                 <img
-                  src="@/assets/images/bg/bg_1.jpg"
+                  :src="getImageUrl(imageIndex)"
                   alt=""
-                  class="block object-cover object-center w-full h-full rounded-lg border-2 shadow-soft-md border-slate-100 bg-clip-border"
+                  class="block object-cover object-center w-full md:h-full h-72 rounded-lg border-2 shadow-soft-md border-slate-100 bg-clip-border"
                 />
               </div>
               <!--  -->
               <div class="w-full px-1 py-5 rounded-md md:px-4 xl:col-span-3">
-                <form novalidate="" action="" class="self-stretch space-y-1">
+                <form method="post" class="self-stretch space-y-1">
                   <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-4">
                     <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
                       <label for="imagesListe" class="text-slate-100"
                         >Choisir image</label
                       >
                       <select
+                        v-model="imageIndex"
                         class="imagesListe px-4 py-3 w-full text-slate-700 rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm"
                       >
                         <option value="1" selected>Image #1</option>
@@ -96,37 +242,45 @@ export default {
                         <option value="6">Image #6</option>
                         <option value="7">Image #7</option>
                         <option value="8">Image #8</option>
-                        <option value="9">Image #9</option>
-                        <option value="10">Image #10</option>
-                        <option value="11">Image #11</option>
-                        <option value="12">Image #12</option>
+                        <option value="9">Image #9</option> 
+                        <option value="10">Image #10</option> 
+                        <option value="11">Image #11</option> 
+                        <option value="12">Image #12</option> 
+                        <option value="13">Image #13</option> 
+                        <option value="14">Image #14</option> 
+
                       </select>
                     </div>
                     <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
                       <label for="prenom" class="text-slate-100">Votre Prénom</label>
                       <input
+                        v-model="prenom"
                         id="prenom"
                         type="text"
                         placeholder="Votre prénom"
+                        required
                         class="w-full py-3 placeholder-gray-400/70 text-slate-700 bg-gray-100 rounded-md border-2 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                       />
                     </div>
                   </div>
                   <div class=" ">
                     <textarea
+                      v-model="monVoeux"
                       placeholder="Rédiger votre voeux..."
                       class="block mt-2 w-full placeholder-gray-400/70 text-slate-700 rounded-lg border border-gray-200 bg-gray-100 px-4 h-60 py-2 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                      required
                     ></textarea>
 
                     <p class="mt-3 text-xs text-gray-200">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Que cette saison festive vous apporte joie et bonheur!
                     </p>
                   </div>
-                  <div class="text-right m-2 px-5">
-                    <createvoeuxbtn
-                      :btnLinkTo="'/'"
-                      :btnTexte="'Créer ton voeux Personnel'"
-                    />
+                  <div class="text-center m-2 px-5">
+                    <a type="submit" value="Submit" @click.prevent="checkForm">
+                      <createvoeuxbtn
+                        :btnLinkTo="''"
+                        :btnTexte="'Créer ton voeux Personnel'"
+                    /></a>
                   </div>
                 </form>
               </div>
@@ -139,10 +293,12 @@ export default {
         </div>
       </main>
       <!-- <createvoeuxbtn /> -->
-      <hr class="my-4" />
-      <pageFooter />
+      <hr class="my-10" />
+      <pageFooter class="fixed bottom-0"/>
     </div>
   </section>
+
+  
 </template>
 
 <style>

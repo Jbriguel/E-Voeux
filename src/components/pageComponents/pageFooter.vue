@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="fixed w-full bottom-0 flex justify-center pt-1 space-x-2 align-center p-1 bg-gray-900 bg-opacity-40 text-gray-300"
+    class="  w-full bottom-0 flex justify-center pt-1 space-x-2 align-center p-1 bg-gray-900 bg-opacity-40 text-gray-300"
   >
     <div class="text-center items-center text-sm md:text-base">
       <i class="far fa-copyright text-secondary"></i>&nbsp;Creation de Joys Floresco

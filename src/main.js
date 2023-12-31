@@ -9,8 +9,11 @@ import { firebaseApp } from './js/firebase/firebase';
 // ... other firebase imports 
 import VueCookies from 'vue3-cookies'
 
+// import VueSocialSharing from '@/vue-social-sharing'
+import VueSocialSharing from 'vue-social-sharing'
 
-
+import {LoadingPlugin} from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 
 import App from './App.vue'
 import router from './router'
@@ -43,5 +46,7 @@ app.use(VueFire, {
     modules: [VueFireFirestoreOptionsAPI()],
 });
 
+app.use(LoadingPlugin);
+app.use(VueSocialSharing);
 
 app.mount('#app')
