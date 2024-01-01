@@ -152,7 +152,7 @@ export default {
   <section class="py-5 m-0">
     <img
       src="@/assets/images/bg/bg_6.jpg"
-      loading="lazy"
+      loading="lazy  Fatou : +965 55636159"
       alt="Photo"
       class="w-full h-full object-cover object-center inset-0 fixed"
     />
@@ -237,7 +237,7 @@ body {
   align-content: center;
 }
 .topText {
-  font-family:'Marko One', serif;
+  font-family:"Mountains of Christmas", serif;
 }
 
 .snow {
@@ -311,7 +311,7 @@ body {
 @media screen and (max-width: 768px) {
   .button {
     width: 100%; /* Vous pouvez ajuster la largeur selon vos besoins */
-    max-width: 300px; /* Optionnel : définissez une largeur maximale */
+    max-width: 250px; /* Optionnel : définissez une largeur maximale */
     margin: 0 auto; /* Centrer le bouton */
   }
 }

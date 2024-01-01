@@ -24,19 +24,19 @@ export default {
 
 <style lang="scss">
 @import "@/assets/base.css";
-// @font-face {
-//   font-family: "Poppins";
-//   src: local("Poppins"), url(./assets/) format("truetype");
-// }
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"), url(./assets/) format("truetype");
+}
 
-// #here {
-//   margin: 0 auto;
-//   background-color: white;
-//   font-weight: normal;
-//   font-family: "Poppins";
-//   min-height: 100vh;
-//   margin-bottom: 0px;
-// }
+ #here {
+   margin: 0 auto;
+   background-color: white;
+   font-weight: normal;
+   font-family: "Poppins";
+   min-height: 100vh;
+   margin-bottom: 0px;
+ }
 * {
   font-family: 'Poppins';
 }

@@ -152,7 +152,7 @@
           network="whatsapp"
           :url="genereLien()"
           title="E-Voeux"
-          :description="`${prenom} vous a laissé un voeux.\n Veuillez cliquer sur le lien pour accéder au voeux.`" 
+          :description="`Un vœu vous attend de la part de ${prenom} pour célébrer la nouvelle année ! Cliquez sur le lien ci-dessous pour découvrir ce message spécial de Nouvel An et débuter 2024 avec des émotions chaleureuses et positives.`" 
           media="../../assets/evoeux.jpg"
           class="w-full"
         > 

@@ -167,7 +167,7 @@ checkForm: async function (e) {
   <linkCopyModal  :link="genereLien()" v-if="showLink==true" @close="showLink=false" :prenom="prenom" />
   <section class="w-full h-full py-5 m-0 bg-transparent relative">
     <img
-      src="@/assets/images/bg/bg_1.jpg"
+      src="@/assets/images/bg/bg_6.jpg"
       loading="lazy"
       alt="Photo"
       class="w-full h-full object-cover object-center absolute inset-0"
@@ -219,7 +219,7 @@ checkForm: async function (e) {
                 <img
                   :src="getImageUrl(imageIndex)"
                   alt=""
-                  class="block object-cover object-center w-full md:h-full h-72 rounded-lg border-2 shadow-soft-md border-slate-100 bg-clip-border"
+                  class="block object-cover object-center w-full mx-5 md:h-full h-72 rounded-lg border-2 shadow-soft-md border-slate-100 bg-clip-border"
                 />
               </div>
               <!--  -->
@@ -263,7 +263,7 @@ checkForm: async function (e) {
                       />
                     </div>
                   </div>
-                  <div class=" ">
+                  <div class="grid-cols-1 md:col-span-2 xl:col-span-3 ">
                     <textarea
                       v-model="monVoeux"
                       placeholder="Rédiger votre voeux..."

@@ -56,7 +56,7 @@ props:
   -o-transition: 500ms linear;
   transition: 500ms linear;
  
-  width: 300px; /* Taille par défaut */
+  width: 250px; /* Taille par défaut */
 }
 
 /* Pour les écrans mobiles ou de taille inférieure à une certaine limite */
