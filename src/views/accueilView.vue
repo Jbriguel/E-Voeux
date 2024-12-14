@@ -22,8 +22,7 @@ export default {
   name: "Accueil",
   props: {},
   setup(props) {
-
-    const textesData = ref(textesDataStore()); 
+    const textesData = ref(textesDataStore());
     const router = useRouter();
     const route = useRoute();
 
@@ -122,7 +121,8 @@ export default {
       showVoeux3,
       closeModal2,
       closeModal3,
-      contenu_VoeuxPerso,textesData
+      contenu_VoeuxPerso,
+      textesData,
     };
   },
   mounted() {
@@ -151,40 +151,48 @@ export default {
 <template>
   <section class="py-5 m-0">
     <img
-      src="@/assets/images/bg/bg_6.jpg"
+      src="@/assets/images/bg/bg_1.jpg"
       loading="lazy  Fatou : +965 55636159"
       alt="Photo"
       class="w-full h-full object-cover object-center inset-0 fixed"
     />
 
+    <div class="snow2 absolute inset-0 "></div>
     <div class="snow mix-blend-multiply fixed inset-0 bg-slate-900 bg-opacity-30">
       <div></div>
-    </div>
-    <div class="h-full md:flex    items-center justify-center content-center text-white absolute inset-0">
+    </div> 
+   <div
+      class="h-full md:flex items-center justify-center content-center text-white absolute inset-0"
+    >
       <pageHeader class="fixed w-full top-0" />
       <main class="md:my-12 my-10 bg-transparent">
-        <div class="mx-2 max-w-screen-xl px-4 py-10  flex lg:h-screen  items-center">
+        <div
+          class="mx-2 max-w-screen-xl px-4 py-10 flex lg:h-screen items-center"
+        >
           <div class="mx-2 w-full md:max-w-3xl text-center">
             <h1
               class="topText font-extrabold py-2 bg-gradient-to-r from-green-300 via-blue-200 to-purple-200 bg-clip-text text-3xl text-transparent sm:text-5xl"
             >
-             Happy New Year
+              Happy New Year
 
               <span
                 class="sm:block sm:mt-3 text-3xl font-extrabold text-transparent sm:text-5xl topText"
               >
-               2024
+                2024
               </span>
             </h1>
 
             <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
-              {{ textesData.getLocalizedText(10) }} 
+              {{ textesData.getLocalizedText(10) }}
             </p>
 
             <div class="mt-6 md:mx-4 mx-1">
-              <button @click="showModal" class="animate-bounce button " type="button">
-               
- {{ textesData.getLocalizedText(13) }} 
+              <button
+                @click="showModal"
+                class="animate-bounce button"
+                type="button"
+              >
+                {{ textesData.getLocalizedText(13) }}
                 <img
                   class="button-hat"
                   src="https://res.cloudinary.com/freecodez/image/upload/v1701705719/images/guidvrtf8kre7pc3jdk5.webp"
@@ -197,15 +205,15 @@ export default {
                 :btnTexte="textesData.getLocalizedText(12)"
               />
             </div>
-           <hr class="my-10" />
-            <pubCardVue class="mt-6 md:mx-4 mx-1" /> 
+            <hr class="my-10" />
+            <!-- <pubCardVue class="mt-6 md:mx-4 mx-1" /> -->
           </div>
         </div>
       </main>
 
       <hr class="my-10" />
-      <pageFooter class="fixed bottom-0"/>
-    </div>
+      <pageFooter class="fixed bottom-0" />
+    </div>  
   </section>
 
   <CreateVoeuxModal v-if="isShowModal" @close="closeModal" class="my-2" />
@@ -230,19 +238,21 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap");
+@import "@/assets/snow_2.css";
+
 body {
   background-color: #061123;
-  height: 100vh; 
+  height: 100%;
   justify-content: center;
   align-content: center;
 }
+
 .topText {
-  font-family:"Mountains of Christmas", serif;
+  font-family: "Mountains of Christmas", serif;
 }
 
-.snow {
-  /* width: 500px;
-  height: 100px; */
+
+.snow { 
   border: 1px solid rgba(255, 255, 255, 0.1);
   background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50%3B' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st1%7Bopacity:0.3%3Bfill:%23FFFFFF%3B%7D.st3%7Bopacity:0.1%3Bfill:%23FFFFFF%3B%7D%3C/style%3E%3Ccircle class='st1' cx='5' cy='8' r='1'/%3E%3Ccircle class='st1' cx='38' cy='3' r='1'/%3E%3Ccircle class='st1' cx='12' cy='4' r='1'/%3E%3Ccircle class='st1' cx='16' cy='16' r='1'/%3E%3Ccircle class='st1' cx='47' cy='46' r='1'/%3E%3Ccircle class='st1' cx='32' cy='10' r='1'/%3E%3Ccircle class='st1' cx='3' cy='46' r='1'/%3E%3Ccircle class='st1' cx='45' cy='13' r='1'/%3E%3Ccircle class='st1' cx='10' cy='28' r='1'/%3E%3Ccircle class='st1' cx='22' cy='35' r='1'/%3E%3Ccircle class='st1' cx='3' cy='21' r='1'/%3E%3Ccircle class='st1' cx='26' cy='20' r='1'/%3E%3Ccircle class='st1' cx='30' cy='45' r='1'/%3E%3Ccircle class='st1' cx='15' cy='45' r='1'/%3E%3Ccircle class='st1' cx='34' cy='36' r='1'/%3E%3Ccircle class='st1' cx='41' cy='32' r='1'/%3E%3C/svg%3E");
   background-position: 0px 0px;
@@ -255,7 +265,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50%3B' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st1%7Bopacity:0.7%3Bfill:%23FFFFFF%3B%7D.st3%7Bopacity:0.1%3Bfill:%23FFFFFF%3B%7D%3C/style%3E%3Ccircle class='st3' cx='4' cy='14' r='1'/%3E%3Ccircle class='st3' cx='43' cy='3' r='1'/%3E%3Ccircle class='st3' cx='31' cy='30' r='2'/%3E%3Ccircle class='st3' cx='19' cy='23' r='1'/%3E%3Ccircle class='st3' cx='37' cy='22' r='1'/%3E%3Ccircle class='st3' cx='43' cy='16' r='1'/%3E%3Ccircle class='st3' cx='8' cy='45' r='1'/%3E%3Ccircle class='st3' cx='29' cy='39' r='1'/%3E%3Ccircle class='st3' cx='13' cy='37' r='1'/%3E%3Ccircle class='st3' cx='47' cy='32' r='1'/%3E%3Ccircle class='st3' cx='15' cy='4' r='2'/%3E%3Ccircle class='st3' cx='9' cy='27' r='1'/%3E%3Ccircle class='st3' cx='30' cy='9' r='1'/%3E%3Ccircle class='st3' cx='25' cy='15' r='1'/%3E%3Ccircle class='st3' cx='21' cy='45' r='2'/%3E%3Ccircle class='st3' cx='42' cy='45' r='1'/%3E%3C/svg%3E");
   background-position: 0px 0px;
   animation: animatedBackground 15s linear infinite;
-}
+}  
 
 @keyframes animatedBackground {
   0% {
@@ -264,7 +274,7 @@ body {
   100% {
     background-position: 0px 300px;
   }
-}
+}  
 
 /*  */
 /* .button {
@@ -310,9 +320,12 @@ body {
 /* Media query pour les appareils mobiles */
 @media screen and (max-width: 768px) {
   .button {
-    width: 100%; /* Vous pouvez ajuster la largeur selon vos besoins */
-    max-width: 250px; /* Optionnel : définissez une largeur maximale */
-    margin: 0 auto; /* Centrer le bouton */
+    width: 100%;
+    /* Vous pouvez ajuster la largeur selon vos besoins */
+    max-width: 250px;
+    /* Optionnel : définissez une largeur maximale */
+    margin: 0 auto;
+    /* Centrer le bouton */
   }
 }
 

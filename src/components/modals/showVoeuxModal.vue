@@ -209,64 +209,64 @@ export default {
       imagesState.data = [
         {
           key: 1,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_1.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_1.jpeg`))
             .default,
         },
         {
           key: 2,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_2.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_2.jpeg`))
             .default,
         },
         {
           key: 3,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_3.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_3.jpeg`))
             .default,
         },
         {
           key: 4,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_4.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_4.jpeg`))
             .default,
         },
         {
           key: 5,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_5.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_5.jpeg`))
             .default,
         },
         {
           key: 6,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_6.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_6.jpeg`))
             .default,
         }, {
           key: 7,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_7.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_7.jpeg`))
             .default,
         }, {
           key: 8,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_8.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_8.jpeg`))
             .default,
         }, {
           key: 9,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_9.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_9.jpeg`))
             .default,
         }, {
           key: 10,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_10.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_10.jpeg`))
             .default,
         } , {
           key: 11,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_11.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_11.jpeg`))
             .default,
         }  , {
           key: 12,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_12.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_12.jpeg`))
             .default,
         } , {
           key: 13,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_13.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_13.jpeg`))
             .default,
         } , {
           key: 14,
-          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/image_14.jpg`))
+          image: (await import(/* @vite-ignore */ `@/assets/images/imgs/img_14.jpeg`))
             .default,
         } 
       ];
