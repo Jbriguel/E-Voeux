@@ -21,7 +21,16 @@ export const textesDataStore = defineStore('textesData', {
         "Appuie ici pour créer un voeux",
         "Partager via Facebook",
         "Veuillez saisir le prénom avant",
-        "Lien copié"
+        "Lien copié",
+        "Obligatoire",
+        "Créez votre vœu",
+        "Carte de vœux",
+        "Vœux personnalisés",
+        "Exprimez votre créativité dans vos vœux !",
+          "Écrire ses vœux...",
+        "Que ces fêtes de fin d'année vous apportent joie et bonheur !",
+        "Créer ton voeux Personnel",
+        "Accueil"
       ],
       "en": [
         "Your wishes with you.",
@@ -39,8 +48,17 @@ export const textesDataStore = defineStore('textesData', {
         "Create a Personal wish", 
         "Click here to create a wish",
         "Share with Facebook",
-        "link copied",
         "Please enter the first name before",
+        "link copied",
+        "required",
+        "Create your wish",
+        "Greeting Card",
+        "Personalised greetings",
+        "Express your creativity in your greetings!",
+        "Writing your wishes...",
+        "May the festive season bring you joy and happiness!",
+        "Create your own wish",
+        "Home"
       ],
     },
     images: [

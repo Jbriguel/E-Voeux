@@ -9,7 +9,7 @@
             <h3
               class="topText py-2 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-xl font-extrabold text-transparent sm:text-xl"
             >
-              Carte de Voeux
+              {{ textesData.getLocalizedText(19) }}
             </h3>
           </div>
           <div class="flex items-center justify-between">

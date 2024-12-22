@@ -7,13 +7,15 @@ import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/css/index.css";
 import { getVoeuxFormOnline, saveVoeux, printTime } from "../js/firebase/firbaseFunctions";
 import linkCopyModal from "../components/modals/linkCopyModal.vue";
+
+import { textesDataStore } from "@/stores";
 export default {
   name: "AddUserView",
   props: {},
 
   setup(props) {
     const targetRef = ref(null);
-
+    const textesData = ref(textesDataStore());
     function getImageUrl(index) {
       const ind = parseInt(index, 10);
       return imagesState.data[ind-1].image;
@@ -90,7 +92,7 @@ export default {
         } 
       ];
     });
-    return { getImageUrl, imagesState, imageIndex, prenom, monVoeux };
+    return { getImageUrl, imagesState, imageIndex, prenom, monVoeux,textesData };
   },
   mounted() {},
   data() {
@@ -191,7 +193,7 @@ checkForm: async function (e) {
             <button
               class="px-6 py-2 font-medium text-blue-100 rounded bg-gradient-to-br from-red-600 to-red-400"
             >
-              Accueil
+            {{ textesData.getLocalizedText(25) }}
             </button></a
           >
         </nav>
@@ -203,11 +205,11 @@ checkForm: async function (e) {
             <h1
               class="topText text-center bg-gradient-to-r from-green-300 via-blue-200 to-purple-200 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl"
             >
-              Voeux Personnalisé
+            {{ textesData.getLocalizedText(20) }}
             </h1>
             <p class="my-4 text-center text-white md:text-lg text-md">
               <span class="font-medium text-center"
-                >Exprimez Votre Créativité en Vœux!</span
+                > {{ textesData.getLocalizedText(21) }}</span
               >
             </p>
             <!--  -->
@@ -228,7 +230,7 @@ checkForm: async function (e) {
                   <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-4">
                     <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
                       <label for="imagesListe" class="text-slate-100"
-                        >Choisir image</label
+                        >  {{ textesData.getLocalizedText(6) }}</label
                       >
                       <select
                         v-model="imageIndex"
@@ -252,12 +254,12 @@ checkForm: async function (e) {
                       </select>
                     </div>
                     <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
-                      <label for="prenom" class="text-slate-100">Votre Prénom</label>
+                      <label for="prenom" class="text-slate-100">  {{ textesData.getLocalizedText(8) }}</label>
                       <input
                         v-model="prenom"
                         id="prenom"
                         type="text"
-                        placeholder="Votre prénom"
+                        :placeholder="textesData.getLocalizedText(8)"
                         required
                         class="w-full py-3 placeholder-gray-400/70 text-slate-700 bg-gray-100 rounded-md border-2 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                       />
@@ -266,20 +268,20 @@ checkForm: async function (e) {
                   <div class="grid-cols-1 md:col-span-2 xl:col-span-3 ">
                     <textarea
                       v-model="monVoeux"
-                      placeholder="Rédiger votre voeux..."
+                      :placeholder="textesData.getLocalizedText(22)"
                       class="block mt-2 w-full placeholder-gray-400/70 text-slate-700 rounded-lg border border-gray-200 bg-gray-100 px-4 h-60 py-2 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                       required
                     ></textarea>
 
                     <p class="mt-3 text-xs text-gray-200">
-                      Que cette saison festive vous apporte joie et bonheur!
+                      {{ textesData.getLocalizedText(23) }}
                     </p>
                   </div>
                   <div class="text-center m-2 px-5">
                     <a type="submit" value="Submit" @click.prevent="checkForm">
                       <createvoeuxbtn
                         :btnLinkTo="''"
-                        :btnTexte="'Créer ton voeux Personnel'"
+                        :btnTexte="textesData.getLocalizedText(24)"
                     /></a>
                   </div>
                 </form>

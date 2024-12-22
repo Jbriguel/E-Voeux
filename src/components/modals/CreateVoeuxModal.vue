@@ -2,7 +2,7 @@
   <fwb-modal @close="$emit('close')" persistent class="m-0">
     <template #header>
       <div class="flex items-center text-lg text-slate-700">
-        Creer votre vœux
+        {{ textesData.getLocalizedText(18) }}
       </div>
     </template>
     <template #body>
@@ -60,7 +60,7 @@
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-4">
           <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
-            <label for="voeuxListe" class="text-slate-700">Choisir Voeux</label>
+            <label for="voeuxListe" class="text-slate-700">   {{ textesData.getLocalizedText(7) }}</label>
             <select v-model="voeuxIndex"
               class="voeuxListe px-4 py-3 w-full text-slate-700 rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm">
               <option value="1" selected>Voeux #1</option>
@@ -76,7 +76,7 @@
             </select>
           </div>
           <div class="grid-cols-1 md:col-span-2 xl:col-span-3">
-            <label for="imagesListe" class="text-slate-700">Choisir image </label>
+            <label for="imagesListe" class="text-slate-700">   {{ textesData.getLocalizedText(6) }}</label>
             <select v-model="imageIndex"
               class="imagesListe px-4 py-3 w-full text-slate-700 rounded-md bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm">
               <option value="1" selected>Image #1</option>
@@ -99,10 +99,10 @@
         <hr class="my-1" />
 
         <fieldset class="w-full space-y-1 mt-2">
-          <label for="prenom" class="text-slate-700">Votre Prénom <span class="text-red-500 text-xxs"> * (Obligatoire)
+          <label for="prenom" class="text-slate-700">   {{ textesData.getLocalizedText(8) }}<span class="text-red-500 text-xxs"> * (   {{ textesData.getLocalizedText(17) }})
             </span> </label>
 
-          <input v-model="prenom" type="text" name="First Name" placeholder="votre prénom" required
+          <input v-model="prenom" type="text" name="First Name" :placeholder="textesData.getLocalizedText(8)" required
             class="px-4 py-3 w-full rounded-md placeholder-gray-400/70 text-slate-700 bg-gray-100 border-transparent focus:border-gray-300 focus:bg-gray-100 focus:ring-0 text-sm" />
         </fieldset>
 

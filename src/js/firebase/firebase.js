@@ -24,6 +24,6 @@ const analytics = getAnalytics(firebaseApp);
 
 
 export const db = getFirestore(firebaseApp);
-export const visiteurCollection = 'visiteurs';
-export const paysCollection = 'paysDesVisiteurs';
-export const personnalVoeuxCollection = 'personnalsVoeuxCollection'; 
+export const visiteurCollection = 'visiteurs_dec2024';
+export const paysCollection = 'paysDesVisiteurs_dec2024';
+export const personnalVoeuxCollection = 'personnalsVoeuxCollection_dec2024'; 

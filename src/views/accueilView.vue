@@ -152,7 +152,7 @@ export default {
   <section class="py-5 m-0">
     <img
       src="@/assets/images/bg/bg_1.jpg"
-      loading="lazy  Fatou : +965 55636159"
+      loading="lazy"
       alt="Photo"
       class="w-full h-full object-cover object-center inset-0 fixed"
     />
