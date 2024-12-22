@@ -15,6 +15,9 @@ import VueSocialSharing from 'vue-social-sharing'
 import {LoadingPlugin} from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
 
+
+import { Html2CanvasPlugin } from 'vue3-html2canvas';
+
 import App from './App.vue'
 import router from './router'
 
@@ -45,6 +48,7 @@ app.use(VueFire, {
     firebaseApp,
     modules: [VueFireFirestoreOptionsAPI()],
 });
+app.use(Html2CanvasPlugin);
 
 app.use(LoadingPlugin);
 app.use(VueSocialSharing);

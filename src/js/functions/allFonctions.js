@@ -29,11 +29,11 @@ async function getVisIpAddr() {
     }
 }
 
-//Récuperation de la langue
+//Récuperation de la langue 
 function getBrowserLanguage() {
-    const userLanguage = navigator.language || navigator.userLanguage;
-    return userLanguage && userLanguage !== 'en' ? 'fr' : userLanguage;
-}
+    const userLanguage = navigator.language || navigator.userLanguage || 'en'; // Langue par défaut en cas d'absence
+    return userLanguage.startsWith('en') ? 'en' : 'fr'; // Si anglais détecté, retourne 'en', sinon 'fr'
+  }
 
 // Export des fonctions pour les rendre disponibles dans d'autres fichiers
 export { sainText, generateUniqueName, getVisIpAddr, getBrowserLanguage };
