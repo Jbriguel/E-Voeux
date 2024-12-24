@@ -19,7 +19,7 @@
         network="whatsapp"
         :url="link"
         title="E-Voeux"
-        :description="`Un vœu vous attend de la part de ${prenom} pour célébrer la nouvelle année ! Cliquez sur le lien ci-dessous pour découvrir ce message spécial de Nouvel An et débuter 2024 avec des émotions chaleureuses et positives.`"
+        :description="`Un vœu vous attend de la part de ${prenom} pour célébrer la nouvelle année ! Cliquez sur le lien ci-dessous pour découvrir ce message spécial de Nouvel An et débuter 2025 avec des émotions chaleureuses et positives.`"
         media="../../assets/evoeux.jpg"
       >
         <button

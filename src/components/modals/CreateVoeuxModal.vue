@@ -109,7 +109,7 @@
         <div class="w-full flex items-center justify-center my-2  p-1">
 
           <ShareNetwork v-if="isShared() == true" network="whatsapp" :url="genereLien()" title="E-Voeux"
-            :description="`Un vœu vous attend de la part de ${prenom} pour célébrer la nouvelle année ! Cliquez sur le lien ci-dessous pour découvrir ce message spécial de Nouvel An et débuter 2024 avec des émotions chaleureuses et positives.`"
+            :description="`Un vœu vous attend de la part de ${prenom} pour célébrer la nouvelle année ! Cliquez sur le lien ci-dessous pour découvrir ce message spécial de Nouvel An et débuter 2025 avec des émotions chaleureuses et positives.`"
             media="../../assets/evoeux.jpg" class="w-full m-2">
 
             <button data-action="share/whatsapp/share"
@@ -126,7 +126,7 @@
 
           <!-- Partage sur Facebook -->
           <ShareNetwork v-if="isShared()" network="facebook" :url="genereLien()" title="E-Voeux"
-            :description="`Un vœu vous attend de la part de ${prenom} pour célébrer la nouvelle année ! Cliquez sur le lien ci-dessous pour découvrir ce message spécial de Nouvel An et débuter 2024 avec des émotions chaleureuses et positives.`"
+            :description="`Un vœu vous attend de la part de ${prenom} pour célébrer la nouvelle année ! Cliquez sur le lien ci-dessous pour découvrir ce message spécial de Nouvel An et débuter 2025 avec des émotions chaleureuses et positives.`"
             media="../../assets/evoeux.jpg" class="w-full m-2">
             <button data-action="share/facebook/share"
               class="animate-pulse sm:h-14 w-full h-12 px-2 text-center text-white rounded-md bg-blue-600 hover:bg-blue-700">

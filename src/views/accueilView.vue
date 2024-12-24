@@ -157,7 +157,7 @@ export default {
       class="w-full h-full object-cover object-center inset-0 fixed"
     />
 
-    <div class="snow2 absolute inset-0 "></div>
+    <!-- <div class="snow2 absolute inset-0 "></div> -->
     <div class="snow mix-blend-multiply fixed inset-0 bg-slate-900 bg-opacity-30">
       <div></div>
     </div> 
@@ -173,12 +173,12 @@ export default {
             <h1
               class="topText font-extrabold py-2 bg-gradient-to-r from-green-300 via-blue-200 to-purple-200 bg-clip-text text-3xl text-transparent sm:text-5xl"
             >
-              Happy New Year
+            {{ textesData.getLocalizedText(1) }}
 
               <span
                 class="sm:block sm:mt-3 text-3xl font-extrabold text-transparent sm:text-5xl topText"
               >
-                2024
+                2025
               </span>
             </h1>
 
@@ -253,8 +253,41 @@ body {
 
 
 .snow { 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50%3B' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st1%7Bopacity:0.3%3Bfill:%23FFFFFF%3B%7D.st3%7Bopacity:0.1%3Bfill:%23FFFFFF%3B%7D%3C/style%3E%3Ccircle class='st1' cx='5' cy='8' r='1'/%3E%3Ccircle class='st1' cx='38' cy='3' r='1'/%3E%3Ccircle class='st1' cx='12' cy='4' r='1'/%3E%3Ccircle class='st1' cx='16' cy='16' r='1'/%3E%3Ccircle class='st1' cx='47' cy='46' r='1'/%3E%3Ccircle class='st1' cx='32' cy='10' r='1'/%3E%3Ccircle class='st1' cx='3' cy='46' r='1'/%3E%3Ccircle class='st1' cx='45' cy='13' r='1'/%3E%3Ccircle class='st1' cx='10' cy='28' r='1'/%3E%3Ccircle class='st1' cx='22' cy='35' r='1'/%3E%3Ccircle class='st1' cx='3' cy='21' r='1'/%3E%3Ccircle class='st1' cx='26' cy='20' r='1'/%3E%3Ccircle class='st1' cx='30' cy='45' r='1'/%3E%3Ccircle class='st1' cx='15' cy='45' r='1'/%3E%3Ccircle class='st1' cx='34' cy='36' r='1'/%3E%3Ccircle class='st1' cx='41' cy='32' r='1'/%3E%3C/svg%3E");
+  border: 1px solid rgba(255, 255, 255, 0.521);
+  /* background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 50 50' style='enable-background:new 0 0 50 50%3B' xml:space='preserve'%3E%3Cstyle type='text/css'%3E.st1%7Bopacity:0.3%3Bfill:%23FFFFFF%3B%7D.st3%7Bopacity:0.1%3Bfill:%23FFFFFF%3B%7D%3C/style%3E%3Ccircle class='st1' cx='5' cy='8' r='1'/%3E%3Ccircle class='st1' cx='38' cy='3' r='1'/%3E%3Ccircle class='st1' cx='12' cy='4' r='1'/%3E%3Ccircle class='st1' cx='16' cy='16' r='1'/%3E%3Ccircle class='st1' cx='47' cy='46' r='1'/%3E%3Ccircle class='st1' cx='32' cy='10' r='1'/%3E%3Ccircle class='st1' cx='3' cy='46' r='1'/%3E%3Ccircle class='st1' cx='45' cy='13' r='1'/%3E%3Ccircle class='st1' cx='10' cy='28' r='1'/%3E%3Ccircle class='st1' cx='22' cy='35' r='1'/%3E%3Ccircle class='st1' cx='3' cy='21' r='1'/%3E%3Ccircle class='st1' cx='26' cy='20' r='1'/%3E%3Ccircle class='st1' cx='30' cy='45' r='1'/%3E%3Ccircle class='st1' cx='15' cy='45' r='1'/%3E%3Ccircle class='st1' cx='34' cy='36' r='1'/%3E%3Ccircle class='st1' cx='41' cy='32' r='1'/%3E%3C/svg%3E"); */
+  background-image: 
+    radial-gradient(1px 1px at 5% 10%, white 50%, transparent),
+    radial-gradient(1px 1px at 15% 25%, white 50%, transparent),
+    radial-gradient(1px 1px at 25% 40%, white 50%, transparent),
+    radial-gradient(1px 1px at 35% 55%, white 50%, transparent),
+    radial-gradient(1px 1px at 45% 70%, white 50%, transparent),
+    radial-gradient(1px 1px at 55% 85%, white 50%, transparent),
+    radial-gradient(1px 1px at 65% 15%, white 50%, transparent),
+    radial-gradient(1px 1px at 75% 30%, white 50%, transparent),
+    radial-gradient(1px 1px at 85% 45%, white 50%, transparent),
+    radial-gradient(1px 1px at 95% 60%, white 50%, transparent),
+    radial-gradient(1px 1px at 10% 80%, white 50%, transparent),
+    radial-gradient(1px 1px at 20% 5%, white 50%, transparent),
+    radial-gradient(1px 1px at 30% 20%, white 50%, transparent),
+    radial-gradient(1px 1px at 40% 35%, white 50%, transparent),
+    radial-gradient(1px 1px at 50% 50%, white 50%, transparent),
+    radial-gradient(1px 1px at 60% 65%, white 50%, transparent),
+    radial-gradient(1px 1px at 70% 80%, white 50%, transparent),
+    radial-gradient(1px 1px at 80% 95%, white 50%, transparent),
+    radial-gradient(1px 1px at 90% 10%, white 50%, transparent),
+    radial-gradient(1px 1px at 5% 40%, white 50%, transparent),
+    radial-gradient(1px 1px at 15% 70%, white 50%, transparent),
+    radial-gradient(1px 1px at 25% 90%, white 50%, transparent),
+    radial-gradient(1px 1px at 35% 15%, white 50%, transparent),
+    radial-gradient(1px 1px at 45% 35%, white 50%, transparent),
+    radial-gradient(1px 1px at 55% 55%, white 50%, transparent),
+    radial-gradient(1px 1px at 65% 75%, white 50%, transparent),
+    radial-gradient(1px 1px at 75% 95%, white 50%, transparent),
+    radial-gradient(1px 1px at 85% 25%, white 50%, transparent),
+    radial-gradient(1px 1px at 95% 45%, white 50%, transparent);
+  background-repeat: repeat;
+  background-size: 50px 50px; /* Réduit la taille pour plus de densité */
+ 
   background-position: 0px 0px;
   animation: animatedBackground 10s linear infinite;
 }
@@ -272,7 +305,7 @@ body {
     background-position: 0 0;
   }
   100% {
-    background-position: 0px 300px;
+    background-position: 0px 600px;
   }
 }  
 

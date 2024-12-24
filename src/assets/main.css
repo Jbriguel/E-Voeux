@@ -5,7 +5,10 @@
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
-}
+  
+    height: 100%;
+    overflow: hidden; /* Désactive le scroll */
+  }
 
 a,
 .green {

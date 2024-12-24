@@ -59,7 +59,11 @@
 }
 
 body {
-  min-height: 100vh;
+  height: 100%;
+  overflow: hidden; /* Désactive le scroll */
+
+
+  /* min-height: 100vh; */
   color: var(--color-text);
   background: var(--color-background);
   transition:
