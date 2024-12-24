@@ -157,10 +157,10 @@ export default {
       class="w-full h-full object-cover object-center inset-0 fixed"
     />
 
-    <!-- <div class="snow2 absolute inset-0 "></div> -->
-    <div class="snow mix-blend-multiply fixed inset-0 bg-slate-900 bg-opacity-30">
+    <div class="snow2 absolute inset-0 "></div>
+    <!-- <div class="snow mix-blend-multiply fixed inset-0 bg-slate-900 bg-opacity-30">
       <div></div>
-    </div> 
+    </div>  -->
    <div
       class="h-full md:flex items-center justify-center content-center text-white absolute inset-0"
     >

@@ -3,6 +3,7 @@ import './index.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import VSnow from "vsnow";
 // Import the functions you need from the SDKs you need
 import { VueFire, VueFireFirestoreOptionsAPI } from "vuefire";
 import { firebaseApp } from './js/firebase/firebase';
@@ -35,6 +36,8 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
+//Full install
+app.use(VSnow);
 // app.use(analytics)
 // default options config: { expires: '1d', path: '/', domain: '', secure: '', sameSite: 'Lax' }
 app.use(VueCookies, {
